@@ -1,20 +1,10 @@
-MISSION: ORBITAL RESCUE 01
-CALLSIGN: KESTREL
-OBJECTIVE: Dock with ARES RELAY before life-support expires.
-
-START:
-position_x = -260
-position_y = 80
-velocity_x = 10
-velocity_y = -2
-fuel = 600
-
-SUCCESS CONDITIONS:
-distance <= 38 m
-relative_speed <= 8 m/s
-alignment_error <= 14 degrees
-
-OPTIONAL STORY:
-A micrometeoroid strike disabled the station's attitude-control system.
-The station cannot rotate to meet you. Your spacecraft must perform the
-entire rendezvous and docking manoeuvre manually.
+name ORBITAL_RESCUE_01
+callsign KESTREL
+startPosition -260 80
+startVelocity 10 -2
+startAngleRadians 0
+startFuel 600
+timeLimit 120
+captureDistance 38
+safeSpeed 8
+safeAngleRadians 0.25

@@ -17,6 +17,8 @@ add_executable(orbital_rescue
     src/main.cpp
     src/Spacecraft.cpp
     src/Simulation.cpp
+        include/MissionConfig.h
+        src/MissionConfig.cpp
 )
 
 target_include_directories(
