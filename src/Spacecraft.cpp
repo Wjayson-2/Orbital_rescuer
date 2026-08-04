@@ -1,18 +1,21 @@
 #include "Spacecraft.hpp"
 #include <algorithm>
 #include <cmath>
+#include "MissionConfig.h"
 
 Spacecraft::Spacecraft() {
     reset();
 }
 
+
+
 void Spacecraft::reset() {
-    position_ = {-260.0, 80.0};
-    velocity_ = {10.0, -2.0};
-    angleRadians_ = 0.15;
-    angularVelocity_ = 0.0;
-    fuel_ = 600.0;
-    hullIntegrity_ = 100.0;
+    position_ = {config_global.startPosition.x, config_global.startPosition.y};
+    velocity_ = {config_global.startVelocity.x, config_global.startVelocity.y};
+    angleRadians_ = config_global.startAngleRadians;
+    angularVelocity_ = config_global.angularVelocity;
+    hullIntegrity_ = config_global.hullIntegrity;
+    fuel_ = config_global.startFuel;
 }
 
 void Spacecraft::update(double dt, const ControlInput& input) {

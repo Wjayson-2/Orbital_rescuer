@@ -7,6 +7,10 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include "MissionConfig.h"
+
+
+
 
 namespace {
 constexpr int kScreenWidth = 1280;
@@ -99,10 +103,12 @@ void drawTelemetry(const Simulation& sim) {
 }
 
 void drawHelp() {
+    std::string text;
     DrawRectangle(18, kScreenHeight - 106, 600, 84, Fade(BLACK, 0.70f));
     DrawText("W: main engine     A,D: side thrusters", 32, kScreenHeight - 92, 18, LIGHTGRAY);
     DrawText("Q / E: rotate    R: reset    P: pause", 32, kScreenHeight - 66, 18, LIGHTGRAY);
-    DrawText("Goal: dock below 8 m/s and within 14 degrees.", 32, kScreenHeight - 40, 18, SKYBLUE);
+    text = "Goal: dock below " + std::to_string(config_global.dockingLimits.safeSpeed) + " m/s and within " + std::to_string(config_global.dockingLimits.safeAngleRadians) + " rad.";
+    DrawText(text.c_str(), 32, kScreenHeight - 40, 18, SKYBLUE);
 }
 
 ControlInput readControls() {
@@ -111,10 +117,10 @@ ControlInput readControls() {
     if (IsKeyDown(KEY_W)) {
         input.mainThrottle = 1.0;
     }
-    if (IsKeyDown(KEY_A)) {
+    if (IsKeyDown(KEY_D)) {
         input.lateralThrottle -= 1.0;
     }
-    if (IsKeyDown(KEY_D)) {
+    if (IsKeyDown(KEY_A)) {
         input.lateralThrottle += 1.0;
     }
     if (IsKeyDown(KEY_Q)) {
@@ -129,6 +135,7 @@ ControlInput readControls() {
 }
 
 int main() {
+    loadMissionConfig("./missions/mission_01.txt");
     InitWindow(kScreenWidth, kScreenHeight, "Orbital Rescue - C++ Starter Project");
     SetTargetFPS(60);
 

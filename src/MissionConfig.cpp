@@ -9,11 +9,12 @@ using namespace std;
 
 bool checkConfig(const MissionConfig& config);
 
-MissionConfig loadMissionConfig(
+MissionConfig config_global;
+
+void loadMissionConfig(
     const std::string& filename)
 {
     MissionConfig config;
-
     std::ifstream file(filename);
 
 
@@ -107,6 +108,29 @@ MissionConfig loadMissionConfig(
             }else {
                 config.time_initialized = true;
             }
+        }else if (key == "angularVelocity") {
+            file >> config.angularVelocity;
+            if(file.fail()) {
+                std::cout << "Angular velocity invalid\n";
+            }else{
+                config.angularVelocity_initialized = true;
+            }
+        }else if (key == "hullIntegrity") {
+            file >> config.hullIntegrity;
+            if(file.fail()) {
+                std::cout << "Hull integrity invalid\n";
+            }else{
+                config.hullIntegrity_initialized = true;
+            }
+        }else if (key == "DockingLimits") {
+            file >> config.dockingLimits.captureDistance;
+            file >> config.dockingLimits.safeSpeed;
+            file >> config.dockingLimits.safeAngleRadians;
+            if(file.fail()) {
+                std::cout << "Docking limits invalid\n";
+            }else{
+                config.dockingLimits_initialized = true;
+            }
         }
         else if(key[0] == '#') {
             continue;
@@ -119,7 +143,7 @@ MissionConfig loadMissionConfig(
     };
 
     if (checkConfig(config)) {
-        return config;
+        config_global = config;
     }else{
         throw std::runtime_error("Invalid config");
     }
@@ -154,4 +178,17 @@ bool checkConfig(const MissionConfig& config) {
         cout<<"Angle missing\n";
         return false;
     }
+    if (!config.angularVelocity_initialized) {
+        cout<<"Angular velocity missing\n";
+        return false;
+    }
+    if (!config.hullIntegrity_initialized) {
+        cout<<"Hull integrity missing\n";
+        return false;
+    }
+    if (!config.dockingLimits_initialized) {
+        cout<<"Docking limits missing\n";
+        return false;
+    }
+    return true;
 }

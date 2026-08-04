@@ -4,31 +4,30 @@
 #ifndef ORBITALRESCUESTARTER_MISSIONCONFIG_H
 #define ORBITALRESCUESTARTER_MISSIONCONFIG_H
 #include <string>
+#include "vec2.hpp"
 
 struct DockingLimits {
-    double captureDistance;
-    double safeSpeed;
-    double safeAngleRadians;
+    double captureDistance{};
+    double safeSpeed{};
+    double safeAngleRadians{};
 };
 
-struct Vec2
-{
-    double x;
-    double y;
-};
+
 
 struct MissionConfig {
-    std::string name;
-    std::string callsign;
+    std::string name{};
+    std::string callsign{};
 
-    Vec2 startPosition;
-    Vec2 startVelocity;
+    Vec2 startPosition{};
+    Vec2 startVelocity{};
 
-    double startAngleRadians;
-    double startFuel;
-    double timeLimit;
+    double startAngleRadians{};
+    double startFuel{};
+    double timeLimit{};
+    double angularVelocity{};
+    double hullIntegrity{};
 
-    DockingLimits dockingLimits;
+    DockingLimits dockingLimits{};
 
     bool pos_initialized{false};
     bool name_initialized{false};
@@ -37,9 +36,13 @@ struct MissionConfig {
     bool angle_initialized{false};
     bool fuel_initialized{false};
     bool time_initialized{false};
+    bool angularVelocity_initialized{false};
+    bool hullIntegrity_initialized{false};
+    bool dockingLimits_initialized{false};
 
 };
-MissionConfig loadMissionConfig(
+void loadMissionConfig(
     const std::string& filename
 );
+extern MissionConfig config_global;
 #endif //ORBITALRESCUESTARTER_MISSIONCONFIG_H

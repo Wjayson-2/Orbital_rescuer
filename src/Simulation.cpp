@@ -1,11 +1,10 @@
 #include "Simulation.hpp"
 #include <algorithm>
 #include <cmath>
+#include "MissionConfig.h"
 
 namespace {
-constexpr double kCaptureDistance = 38.0;
-constexpr double kSafeDockingSpeed = 8.0;
-constexpr double kSafeAngle = 0.25;
+
 
 double wrappedAngle(double angle) {
     constexpr double pi = 3.14159265358979323846;
@@ -48,11 +47,10 @@ DockingResult Simulation::evaluateDocking() const {
 
     // The station's docking axis points left, so the craft should point right.
     const double angleError = std::abs(wrappedAngle(craft_.angleRadians()));
-
     return {
-        distance <= kCaptureDistance,
-        speed <= kSafeDockingSpeed,
-        angleError <= kSafeAngle
+        distance <= config_global.dockingLimits.captureDistance,
+        speed <= config_global.dockingLimits.safeSpeed,
+        angleError <= config_global.dockingLimits.safeAngleRadians,
     };
 }
 
