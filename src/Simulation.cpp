@@ -57,10 +57,21 @@ void Simulation::update(double dt, const ControlInput& input) {
     checkFailure();
 }
 
+void pushback(Vec2 offset, double distance, Spacecraft& craft_) {
+    double penetration = (config_global.dockingLimits.captureDistance) - distance;
+    Vec2 push;
+    Vec2 push_to;
+    Vec2 collision_normal = offset.normalized();
+    push_to = craft_.position() + collision_normal * penetration;
+    craft_.setPosition(push_to);
+}
+
 DockingResult Simulation::evaluateDocking() const {
-    const Vec2 offset = craft_.position() - stationPosition_;
+    const Vec2 offset = craft_.position() - portPosition();
     const double distance = offset.magnitude();
     const double speed = craft_.velocity().magnitude();
+
+
 
     // The station's docking axis points left, so the craft should point right.
     const double angleError = std::abs(wrappedAngle(craft_.angleRadians()));
@@ -72,6 +83,8 @@ DockingResult Simulation::evaluateDocking() const {
 }
 
 void Simulation::checkDocking() {
+    const Vec2 offset = craft_.position() - portPosition();
+    const double distance = offset.magnitude();
     const DockingResult result = evaluateDocking();
     if (!result.insideCaptureZone) {
         return;
@@ -84,8 +97,9 @@ void Simulation::checkDocking() {
 
     craft_.applyCollisionDamage(craft_.velocity().magnitude());
 
-    // Bounce away from the station after a failed docking attempt.
-    craft_.update(0.05, ControlInput{});
+    if (distance < config_global.dockingLimits.captureDistance) {
+        pushback(offset, distance, craft_);
+    }
 }
 
 void Simulation::checkFailure() {
@@ -95,7 +109,7 @@ void Simulation::checkFailure() {
         state_ = MissionState::Failed;
     }
 
-    if (missionTime_ > 180.0) {
+    if (missionTime_ > config_global.timeLimit) {
         state_ = MissionState::Failed;
     }
 }

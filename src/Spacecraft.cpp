@@ -18,6 +18,14 @@ void Spacecraft::reset() {
     fuel_ = config_global.startFuel;
 }
 
+void Spacecraft::setPosition(const Vec2& position) {
+    position_ = position;
+}
+
+void Spacecraft::setVelocity(const Vec2& velocity) {
+    velocity_ = velocity;
+}
+
 void Spacecraft::update(double dt, const ControlInput& input) {
     if (isDestroyed()) {
         return;
@@ -57,10 +65,11 @@ void Spacecraft::update(double dt, const ControlInput& input) {
 }
 
 void Spacecraft::applyCollisionDamage(double relativeSpeed) {
-    if (relativeSpeed <= 4.0) {
+    if (relativeSpeed <= config_global.dockingLimits.safeSpeed) {
         return;
     }
 
-    const double damage = (relativeSpeed - 4.0) * 7.5;
-    hullIntegrity_ = std::max(0.0, hullIntegrity_ - damage);
+        const double damage = (relativeSpeed- config_global.dockingLimits.safeSpeed) * 7.5;
+        hullIntegrity_ = std::max(0.0, hullIntegrity_ - damage);
+
 }

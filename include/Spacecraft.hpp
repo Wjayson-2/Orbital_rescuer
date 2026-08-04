@@ -13,6 +13,8 @@ public:
 
     void reset();
     void update(double dt, const ControlInput& input);
+    void setPosition(const Vec2& position);
+    void setVelocity(const Vec2& velocity);
 
     const Vec2& position() const { return position_; }
     const Vec2& velocity() const { return velocity_; }

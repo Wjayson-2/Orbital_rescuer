@@ -28,6 +28,7 @@ public:
 
     MissionState state() const { return state_; }
     const Vec2& stationPosition() const { return stationPosition_; }
+    const Vec2& portPosition() const { return portPosition_; }
 
     DockingResult evaluateDocking() const;
     double missionTime() const { return missionTime_; }
@@ -39,6 +40,7 @@ public:
 private:
     Spacecraft craft_;
     Vec2 stationPosition_{290.0, 0.0};
+    Vec2 portPosition_{290.0-48, 0.0};
     MissionState state_{MissionState::Briefing};
     double missionTime_{0.0};
 
