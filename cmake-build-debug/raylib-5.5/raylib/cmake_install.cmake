@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/WJays/Desktop/Orbital_rescuer/raylib-5.5/src
+# Install script for directory: E:/CLionProjects/starship/raylib-5.5/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,42 +34,42 @@ endif()
 
 # Set path to fallback-tool for dependency-resolution.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "C:/Program Files/JetBrains/CLion 2026.1.4/bin/mingw/bin/objdump.exe")
+  set(CMAKE_OBJDUMP "E:/CLion 2026.1.4/bin/mingw/bin/objdump.exe")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "C:/Users/WJays/Desktop/Orbital_rescuer/cmake-build-debug/raylib-5.5/raylib/libraylib.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "E:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/libraylib.a")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE FILES
-    "C:/Users/WJays/Desktop/Orbital_rescuer/raylib-5.5/src/raylib.h"
-    "C:/Users/WJays/Desktop/Orbital_rescuer/raylib-5.5/src/rlgl.h"
-    "C:/Users/WJays/Desktop/Orbital_rescuer/raylib-5.5/src/raymath.h"
+    "E:/CLionProjects/starship/raylib-5.5/src/raylib.h"
+    "E:/CLionProjects/starship/raylib-5.5/src/rlgl.h"
+    "E:/CLionProjects/starship/raylib-5.5/src/raymath.h"
     )
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "C:/Users/WJays/Desktop/Orbital_rescuer/cmake-build-debug/raylib-5.5/raylib/raylib.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "E:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/raylib.pc")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/raylib" TYPE FILE FILES "C:/Users/WJays/Desktop/Orbital_rescuer/cmake-build-debug/raylib-5.5/raylib/raylib-config-version.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/raylib" TYPE FILE FILES "E:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/raylib-config-version.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/raylib" TYPE FILE FILES "C:/Users/WJays/Desktop/Orbital_rescuer/raylib-5.5/src/../cmake/raylib-config.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/raylib" TYPE FILE FILES "E:/CLionProjects/starship/raylib-5.5/src/../cmake/raylib-config.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("C:/Users/WJays/Desktop/Orbital_rescuer/cmake-build-debug/raylib-5.5/raylib/external/glfw/cmake_install.cmake")
+  include("E:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/cmake_install.cmake")
 
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "C:/Users/WJays/Desktop/Orbital_rescuer/cmake-build-debug/raylib-5.5/raylib/install_local_manifest.txt"
+  file(WRITE "E:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

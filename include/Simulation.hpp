@@ -1,6 +1,7 @@
 #pragma once
 #include "Spacecraft.hpp"
 #include <string>
+#include <vector>
 
 enum class MissionState {
     Briefing,
@@ -44,3 +45,5 @@ private:
     void checkDocking();
     void checkFailure();
 };
+
+extern std::vector<Vec2> trail_;

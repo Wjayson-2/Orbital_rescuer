@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <cmath>
 #include <iomanip>
+#include <iostream>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -54,28 +55,56 @@ void drawStation(const Vec2& position) {
     DrawText("ARES RELAY", static_cast<int>(p.x - 34), static_cast<int>(p.y + 52), 16, LIGHTGRAY);
 }
 
+void drawTrail() {
+    if (trail_.size() > 2) {
+        for (int i = 0; i+1 < trail_.size(); ++i) {
+            //Vector2 start{static_cast<float>(trail_[i].x), static_cast<float>(trail_[i].y)};
+            //Vector2 end{static_cast<float>(trail_[i+1].x), static_cast<float>(trail_[i+1].y)};
+            float alpha = 1.0f * i / trail_.size();
+            if (trail_[i].x!=trail_[i+1].x && trail_[i].y!=trail_[i+1].y ) {
+            DrawLineV(worldToScreen(trail_[i]), worldToScreen(trail_[i+1]), Fade(SKYBLUE, alpha));}
+        }
+    }
+}
+
 void drawSpacecraft(const Spacecraft& craft, const ControlInput& input) {
     const Vector2 p = worldToScreen(craft.position());
-    const float angleDeg = static_cast<float>(-craft.angleRadians() * RAD2DEG);
 
-    const Vector2 nose{p.x + 28.0f * std::cos(-angleDeg * DEG2RAD),
-                       p.y + 28.0f * std::sin(-angleDeg * DEG2RAD)};
-    const Vector2 left{p.x + 18.0f * std::cos((-angleDeg + 145.0f) * DEG2RAD),
-                       p.y + 18.0f * std::sin((-angleDeg + 145.0f) * DEG2RAD)};
-    const Vector2 right{p.x + 18.0f * std::cos((-angleDeg - 145.0f) * DEG2RAD),
-                        p.y + 18.0f * std::sin((-angleDeg - 145.0f) * DEG2RAD)};
+    // Convert world rotation to screen rotation.
+    // Screen Y increases downward, so the angle must be negated once.
+    const float screenAngle =
+        static_cast<float>(-craft.angleRadians());
+
+    const Vector2 nose{
+        p.x + 28.0f * std::cos(screenAngle),
+        p.y + 28.0f * std::sin(screenAngle)
+    };
+
+    const Vector2 left{
+        p.x + 18.0f * std::cos(screenAngle + 145.0f * DEG2RAD),
+        p.y + 18.0f * std::sin(screenAngle + 145.0f * DEG2RAD)
+    };
+
+    const Vector2 right{
+        p.x + 18.0f * std::cos(screenAngle - 145.0f * DEG2RAD),
+        p.y + 18.0f * std::sin(screenAngle - 145.0f * DEG2RAD)
+    };
 
     DrawTriangle(nose, left, right, RAYWHITE);
     DrawTriangleLines(nose, left, right, SKYBLUE);
 
     if (input.mainThrottle > 0.01 && craft.hasFuel()) {
+        const float flameLength =
+            static_cast<float>(25.0 + 25.0 * input.mainThrottle);
+
         const Vector2 flame{
-            p.x - static_cast<float>((25.0 + 25.0 * input.mainThrottle) *
-                                     std::cos(-angleDeg * DEG2RAD)),
-            p.y - static_cast<float>((25.0 + 25.0 * input.mainThrottle) *
-                                     std::sin(-angleDeg * DEG2RAD))
+            p.x - flameLength * std::cos(screenAngle),
+            p.y - flameLength * std::sin(screenAngle)
         };
+
         DrawTriangle(left, right, flame, ORANGE);
+
+
     }
 }
 
@@ -107,7 +136,7 @@ void drawHelp() {
     DrawRectangle(18, kScreenHeight - 106, 600, 84, Fade(BLACK, 0.70f));
     DrawText("W: main engine     A,D: side thrusters", 32, kScreenHeight - 92, 18, LIGHTGRAY);
     DrawText("Q / E: rotate    R: reset    P: pause", 32, kScreenHeight - 66, 18, LIGHTGRAY);
-    text = "Goal: dock below " + std::to_string(config_global.dockingLimits.safeSpeed) + " m/s and within " + std::to_string(config_global.dockingLimits.safeAngleRadians) + " rad.";
+    text = "Goal: dock below " + fixed(config_global.dockingLimits.safeSpeed,2) + " m/s and within " + fixed(config_global.dockingLimits.safeAngleRadians,2) + " rad.";
     DrawText(text.c_str(), 32, kScreenHeight - 40, 18, SKYBLUE);
 }
 
@@ -123,10 +152,10 @@ ControlInput readControls() {
     if (IsKeyDown(KEY_A)) {
         input.lateralThrottle += 1.0;
     }
-    if (IsKeyDown(KEY_Q)) {
+    if (IsKeyDown(KEY_E)) {
         input.rotationInput -= 1.0;
     }
-    if (IsKeyDown(KEY_E)) {
+    if (IsKeyDown(KEY_Q)) {
         input.rotationInput += 1.0;
     }
 
@@ -171,6 +200,7 @@ int main() {
         drawSpacecraft(simulation.craft(), input);
         drawTelemetry(simulation);
         drawHelp();
+        drawTrail();
 
         const std::string status = simulation.statusMessage();
         const int textWidth = MeasureText(status.c_str(), 30);

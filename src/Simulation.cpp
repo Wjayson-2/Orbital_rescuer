@@ -1,22 +1,31 @@
 #include "Simulation.hpp"
 #include <algorithm>
 #include <cmath>
+#include <iostream>
+#include <ostream>
+#include <stdexcept>
+#include <vector>
+
 #include "MissionConfig.h"
 
 namespace {
 
-
+constexpr int kMaxTrailPoints = 300;
 double wrappedAngle(double angle) {
     constexpr double pi = 3.14159265358979323846;
     while (angle > pi) angle -= 2.0 * pi;
     while (angle < -pi) angle += 2.0 * pi;
     return angle;
+
 }
 }
+
+std::vector<Vec2> trail_;
 
 Simulation::Simulation() = default;
 
 void Simulation::reset() {
+    trail_.clear();
     craft_.reset();
     missionTime_ = 0.0;
     state_ = MissionState::Briefing;
@@ -28,11 +37,24 @@ void Simulation::start() {
     }
 }
 
+void trail_update(Vec2 current_position) {
+    for (int i = 0; i < kMaxTrailPoints; ++i) {
+        trail_[i] = trail_[i + 1];
+    }
+    trail_[kMaxTrailPoints] = current_position;
+}
+
 void Simulation::update(double dt, const ControlInput& input) {
     if (state_ != MissionState::Running) {
         return;
     }
-
+    if (trail_.size() < kMaxTrailPoints) {
+        trail_.push_back(craft_.position());
+    }else if (trail_.size() == kMaxTrailPoints) {
+        trail_update(craft_.position());
+    }else {
+        throw std::logic_error("Simulation::update(): Trail size too large");
+    }
     missionTime_ += dt;
     craft_.update(dt, input);
 

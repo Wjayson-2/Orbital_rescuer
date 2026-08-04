@@ -1,0 +1,55 @@
+{
+	"abstract" : true,
+	"backtrace" : 3,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"find_package"
+		],
+		"files" : 
+		[
+			"E:/CLion 2026.1.4/bin/cmake/win/x64/share/cmake-4.2/Modules/FindThreads.cmake",
+			"raylib-5.5/src/external/glfw/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 60,
+				"parent" : 0
+			},
+			{
+				"file" : 0,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 292,
+				"parent" : 2
+			}
+		]
+	},
+	"codemodelVersion" : 
+	{
+		"major" : 2,
+		"minor" : 9
+	},
+	"id" : "Threads::Threads::@a8c6caf9ebdaeb3d9f9a",
+	"imported" : true,
+	"local" : true,
+	"name" : "Threads::Threads",
+	"paths" : 
+	{
+		"build" : "raylib-5.5/raylib/external/glfw",
+		"source" : "raylib-5.5/src/external/glfw"
+	},
+	"sources" : [],
+	"type" : "INTERFACE_LIBRARY"
+}

@@ -1,0 +1,194 @@
+[
+{
+  "directory": "E:/CLionProjects/starship/cmake-build-debug",
+  "command": "E:\\CLION2~1.4\\bin\\mingw\\bin\\G__~1.EXE -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -IE:/CLionProjects/starship/include -IE:/CLionProjects/starship/raylib-5.5/src -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/include -g -std=gnu++20 -fdiagnostics-color=always -o CMakeFiles\\orbital_rescue.dir\\src\\main.cpp.obj -c E:\\CLionProjects\\starship\\src\\main.cpp",
+  "file": "E:/CLionProjects/starship/src/main.cpp",
+  "output": "E:/CLionProjects/starship/cmake-build-debug/CMakeFiles/orbital_rescue.dir/src/main.cpp.obj"
+},
+{
+  "directory": "E:/CLionProjects/starship/cmake-build-debug",
+  "command": "E:\\CLION2~1.4\\bin\\mingw\\bin\\G__~1.EXE -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -IE:/CLionProjects/starship/include -IE:/CLionProjects/starship/raylib-5.5/src -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/include -g -std=gnu++20 -fdiagnostics-color=always -o CMakeFiles\\orbital_rescue.dir\\src\\Spacecraft.cpp.obj -c E:\\CLionProjects\\starship\\src\\Spacecraft.cpp",
+  "file": "E:/CLionProjects/starship/src/Spacecraft.cpp",
+  "output": "E:/CLionProjects/starship/cmake-build-debug/CMakeFiles/orbital_rescue.dir/src/Spacecraft.cpp.obj"
+},
+{
+  "directory": "E:/CLionProjects/starship/cmake-build-debug",
+  "command": "E:\\CLION2~1.4\\bin\\mingw\\bin\\G__~1.EXE -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -IE:/CLionProjects/starship/include -IE:/CLionProjects/starship/raylib-5.5/src -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/include -g -std=gnu++20 -fdiagnostics-color=always -o CMakeFiles\\orbital_rescue.dir\\src\\Simulation.cpp.obj -c E:\\CLionProjects\\starship\\src\\Simulation.cpp",
+  "file": "E:/CLionProjects/starship/src/Simulation.cpp",
+  "output": "E:/CLionProjects/starship/cmake-build-debug/CMakeFiles/orbital_rescue.dir/src/Simulation.cpp.obj"
+},
+{
+  "directory": "E:/CLionProjects/starship/cmake-build-debug",
+  "command": "E:\\CLION2~1.4\\bin\\mingw\\bin\\G__~1.EXE -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -IE:/CLionProjects/starship/include -IE:/CLionProjects/starship/raylib-5.5/src -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/include -g -std=gnu++20 -fdiagnostics-color=always -o CMakeFiles\\orbital_rescue.dir\\src\\MissionConfig.cpp.obj -c E:\\CLionProjects\\starship\\src\\MissionConfig.cpp",
+  "file": "E:/CLionProjects/starship/src/MissionConfig.cpp",
+  "output": "E:/CLionProjects/starship/cmake-build-debug/CMakeFiles/orbital_rescue.dir/src/MissionConfig.cpp.obj"
+},
+{
+  "directory": "E:/CLionProjects/starship/cmake-build-debug",
+  "command": "E:\\CLION2~1.4\\bin\\mingw\\bin\\gcc.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -D_CRT_SECURE_NO_WARNINGS -IE:/CLionProjects/starship/raylib-5.5/src -isystem E:/CLionProjects/starship/raylib-5.5/src/external/glfw/include -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=gnu99 -fdiagnostics-color=always -o raylib-5.5\\raylib\\CMakeFiles\\raylib.dir\\raudio.c.obj -c E:\\CLionProjects\\starship\\raylib-5.5\\src\\raudio.c",
+  "file": "E:/CLionProjects/starship/raylib-5.5/src/raudio.c",
+  "output": "E:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/CMakeFiles/raylib.dir/raudio.c.obj"
+},
+{
+  "directory": "E:/CLionProjects/starship/cmake-build-debug",
+  "command": "E:\\CLION2~1.4\\bin\\mingw\\bin\\gcc.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -D_CRT_SECURE_NO_WARNINGS -IE:/CLionProjects/starship/raylib-5.5/src -isystem E:/CLionProjects/starship/raylib-5.5/src/external/glfw/include -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=gnu99 -fdiagnostics-color=always -o raylib-5.5\\raylib\\CMakeFiles\\raylib.dir\\rcore.c.obj -c E:\\CLionProjects\\starship\\raylib-5.5\\src\\rcore.c",
+  "file": "E:/CLionProjects/starship/raylib-5.5/src/rcore.c",
+  "output": "E:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/CMakeFiles/raylib.dir/rcore.c.obj"
+},
+{
+  "directory": "E:/CLionProjects/starship/cmake-build-debug",
+  "command": "E:\\CLION2~1.4\\bin\\mingw\\bin\\gcc.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -D_CRT_SECURE_NO_WARNINGS -IE:/CLionProjects/starship/raylib-5.5/src -isystem E:/CLionProjects/starship/raylib-5.5/src/external/glfw/include -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=gnu99 -fdiagnostics-color=always -o raylib-5.5\\raylib\\CMakeFiles\\raylib.dir\\rmodels.c.obj -c E:\\CLionProjects\\starship\\raylib-5.5\\src\\rmodels.c",
+  "file": "E:/CLionProjects/starship/raylib-5.5/src/rmodels.c",
+  "output": "E:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/CMakeFiles/raylib.dir/rmodels.c.obj"
+},
+{
+  "directory": "E:/CLionProjects/starship/cmake-build-debug",
+  "command": "E:\\CLION2~1.4\\bin\\mingw\\bin\\gcc.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -D_CRT_SECURE_NO_WARNINGS -IE:/CLionProjects/starship/raylib-5.5/src -isystem E:/CLionProjects/starship/raylib-5.5/src/external/glfw/include -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=gnu99 -fdiagnostics-color=always -o raylib-5.5\\raylib\\CMakeFiles\\raylib.dir\\rshapes.c.obj -c E:\\CLionProjects\\starship\\raylib-5.5\\src\\rshapes.c",
+  "file": "E:/CLionProjects/starship/raylib-5.5/src/rshapes.c",
+  "output": "E:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/CMakeFiles/raylib.dir/rshapes.c.obj"
+},
+{
+  "directory": "E:/CLionProjects/starship/cmake-build-debug",
+  "command": "E:\\CLION2~1.4\\bin\\mingw\\bin\\gcc.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -D_CRT_SECURE_NO_WARNINGS -IE:/CLionProjects/starship/raylib-5.5/src -isystem E:/CLionProjects/starship/raylib-5.5/src/external/glfw/include -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=gnu99 -fdiagnostics-color=always -o raylib-5.5\\raylib\\CMakeFiles\\raylib.dir\\rtext.c.obj -c E:\\CLionProjects\\starship\\raylib-5.5\\src\\rtext.c",
+  "file": "E:/CLionProjects/starship/raylib-5.5/src/rtext.c",
+  "output": "E:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/CMakeFiles/raylib.dir/rtext.c.obj"
+},
+{
+  "directory": "E:/CLionProjects/starship/cmake-build-debug",
+  "command": "E:\\CLION2~1.4\\bin\\mingw\\bin\\gcc.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -D_CRT_SECURE_NO_WARNINGS -IE:/CLionProjects/starship/raylib-5.5/src -isystem E:/CLionProjects/starship/raylib-5.5/src/external/glfw/include -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=gnu99 -fdiagnostics-color=always -o raylib-5.5\\raylib\\CMakeFiles\\raylib.dir\\rtextures.c.obj -c E:\\CLionProjects\\starship\\raylib-5.5\\src\\rtextures.c",
+  "file": "E:/CLionProjects/starship/raylib-5.5/src/rtextures.c",
+  "output": "E:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/CMakeFiles/raylib.dir/rtextures.c.obj"
+},
+{
+  "directory": "E:/CLionProjects/starship/cmake-build-debug",
+  "command": "E:\\CLION2~1.4\\bin\\mingw\\bin\\gcc.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -D_CRT_SECURE_NO_WARNINGS -IE:/CLionProjects/starship/raylib-5.5/src -isystem E:/CLionProjects/starship/raylib-5.5/src/external/glfw/include -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=gnu99 -fdiagnostics-color=always -o raylib-5.5\\raylib\\CMakeFiles\\raylib.dir\\utils.c.obj -c E:\\CLionProjects\\starship\\raylib-5.5\\src\\utils.c",
+  "file": "E:/CLionProjects/starship/raylib-5.5/src/utils.c",
+  "output": "E:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/CMakeFiles/raylib.dir/utils.c.obj"
+},
+{
+  "directory": "E:/CLionProjects/starship/cmake-build-debug",
+  "command": "E:\\CLION2~1.4\\bin\\mingw\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/include -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/src -IE:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -fdiagnostics-color=always -Wall -o raylib-5.5\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\context.c.obj -c E:\\CLionProjects\\starship\\raylib-5.5\\src\\external\\glfw\\src\\context.c",
+  "file": "E:/CLionProjects/starship/raylib-5.5/src/external/glfw/src/context.c",
+  "output": "E:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src/CMakeFiles/glfw.dir/context.c.obj"
+},
+{
+  "directory": "E:/CLionProjects/starship/cmake-build-debug",
+  "command": "E:\\CLION2~1.4\\bin\\mingw\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/include -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/src -IE:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -fdiagnostics-color=always -Wall -o raylib-5.5\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\init.c.obj -c E:\\CLionProjects\\starship\\raylib-5.5\\src\\external\\glfw\\src\\init.c",
+  "file": "E:/CLionProjects/starship/raylib-5.5/src/external/glfw/src/init.c",
+  "output": "E:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src/CMakeFiles/glfw.dir/init.c.obj"
+},
+{
+  "directory": "E:/CLionProjects/starship/cmake-build-debug",
+  "command": "E:\\CLION2~1.4\\bin\\mingw\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/include -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/src -IE:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -fdiagnostics-color=always -Wall -o raylib-5.5\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\input.c.obj -c E:\\CLionProjects\\starship\\raylib-5.5\\src\\external\\glfw\\src\\input.c",
+  "file": "E:/CLionProjects/starship/raylib-5.5/src/external/glfw/src/input.c",
+  "output": "E:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src/CMakeFiles/glfw.dir/input.c.obj"
+},
+{
+  "directory": "E:/CLionProjects/starship/cmake-build-debug",
+  "command": "E:\\CLION2~1.4\\bin\\mingw\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/include -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/src -IE:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -fdiagnostics-color=always -Wall -o raylib-5.5\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\monitor.c.obj -c E:\\CLionProjects\\starship\\raylib-5.5\\src\\external\\glfw\\src\\monitor.c",
+  "file": "E:/CLionProjects/starship/raylib-5.5/src/external/glfw/src/monitor.c",
+  "output": "E:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src/CMakeFiles/glfw.dir/monitor.c.obj"
+},
+{
+  "directory": "E:/CLionProjects/starship/cmake-build-debug",
+  "command": "E:\\CLION2~1.4\\bin\\mingw\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/include -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/src -IE:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -fdiagnostics-color=always -Wall -o raylib-5.5\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\platform.c.obj -c E:\\CLionProjects\\starship\\raylib-5.5\\src\\external\\glfw\\src\\platform.c",
+  "file": "E:/CLionProjects/starship/raylib-5.5/src/external/glfw/src/platform.c",
+  "output": "E:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src/CMakeFiles/glfw.dir/platform.c.obj"
+},
+{
+  "directory": "E:/CLionProjects/starship/cmake-build-debug",
+  "command": "E:\\CLION2~1.4\\bin\\mingw\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/include -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/src -IE:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -fdiagnostics-color=always -Wall -o raylib-5.5\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\vulkan.c.obj -c E:\\CLionProjects\\starship\\raylib-5.5\\src\\external\\glfw\\src\\vulkan.c",
+  "file": "E:/CLionProjects/starship/raylib-5.5/src/external/glfw/src/vulkan.c",
+  "output": "E:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src/CMakeFiles/glfw.dir/vulkan.c.obj"
+},
+{
+  "directory": "E:/CLionProjects/starship/cmake-build-debug",
+  "command": "E:\\CLION2~1.4\\bin\\mingw\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/include -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/src -IE:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -fdiagnostics-color=always -Wall -o raylib-5.5\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\window.c.obj -c E:\\CLionProjects\\starship\\raylib-5.5\\src\\external\\glfw\\src\\window.c",
+  "file": "E:/CLionProjects/starship/raylib-5.5/src/external/glfw/src/window.c",
+  "output": "E:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src/CMakeFiles/glfw.dir/window.c.obj"
+},
+{
+  "directory": "E:/CLionProjects/starship/cmake-build-debug",
+  "command": "E:\\CLION2~1.4\\bin\\mingw\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/include -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/src -IE:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -fdiagnostics-color=always -Wall -o raylib-5.5\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\egl_context.c.obj -c E:\\CLionProjects\\starship\\raylib-5.5\\src\\external\\glfw\\src\\egl_context.c",
+  "file": "E:/CLionProjects/starship/raylib-5.5/src/external/glfw/src/egl_context.c",
+  "output": "E:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src/CMakeFiles/glfw.dir/egl_context.c.obj"
+},
+{
+  "directory": "E:/CLionProjects/starship/cmake-build-debug",
+  "command": "E:\\CLION2~1.4\\bin\\mingw\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/include -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/src -IE:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -fdiagnostics-color=always -Wall -o raylib-5.5\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\osmesa_context.c.obj -c E:\\CLionProjects\\starship\\raylib-5.5\\src\\external\\glfw\\src\\osmesa_context.c",
+  "file": "E:/CLionProjects/starship/raylib-5.5/src/external/glfw/src/osmesa_context.c",
+  "output": "E:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.obj"
+},
+{
+  "directory": "E:/CLionProjects/starship/cmake-build-debug",
+  "command": "E:\\CLION2~1.4\\bin\\mingw\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/include -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/src -IE:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -fdiagnostics-color=always -Wall -o raylib-5.5\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\null_init.c.obj -c E:\\CLionProjects\\starship\\raylib-5.5\\src\\external\\glfw\\src\\null_init.c",
+  "file": "E:/CLionProjects/starship/raylib-5.5/src/external/glfw/src/null_init.c",
+  "output": "E:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_init.c.obj"
+},
+{
+  "directory": "E:/CLionProjects/starship/cmake-build-debug",
+  "command": "E:\\CLION2~1.4\\bin\\mingw\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/include -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/src -IE:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -fdiagnostics-color=always -Wall -o raylib-5.5\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\null_monitor.c.obj -c E:\\CLionProjects\\starship\\raylib-5.5\\src\\external\\glfw\\src\\null_monitor.c",
+  "file": "E:/CLionProjects/starship/raylib-5.5/src/external/glfw/src/null_monitor.c",
+  "output": "E:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.obj"
+},
+{
+  "directory": "E:/CLionProjects/starship/cmake-build-debug",
+  "command": "E:\\CLION2~1.4\\bin\\mingw\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/include -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/src -IE:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -fdiagnostics-color=always -Wall -o raylib-5.5\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\null_window.c.obj -c E:\\CLionProjects\\starship\\raylib-5.5\\src\\external\\glfw\\src\\null_window.c",
+  "file": "E:/CLionProjects/starship/raylib-5.5/src/external/glfw/src/null_window.c",
+  "output": "E:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_window.c.obj"
+},
+{
+  "directory": "E:/CLionProjects/starship/cmake-build-debug",
+  "command": "E:\\CLION2~1.4\\bin\\mingw\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/include -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/src -IE:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -fdiagnostics-color=always -Wall -o raylib-5.5\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\null_joystick.c.obj -c E:\\CLionProjects\\starship\\raylib-5.5\\src\\external\\glfw\\src\\null_joystick.c",
+  "file": "E:/CLionProjects/starship/raylib-5.5/src/external/glfw/src/null_joystick.c",
+  "output": "E:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.obj"
+},
+{
+  "directory": "E:/CLionProjects/starship/cmake-build-debug",
+  "command": "E:\\CLION2~1.4\\bin\\mingw\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/include -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/src -IE:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -fdiagnostics-color=always -Wall -o raylib-5.5\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\win32_module.c.obj -c E:\\CLionProjects\\starship\\raylib-5.5\\src\\external\\glfw\\src\\win32_module.c",
+  "file": "E:/CLionProjects/starship/raylib-5.5/src/external/glfw/src/win32_module.c",
+  "output": "E:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_module.c.obj"
+},
+{
+  "directory": "E:/CLionProjects/starship/cmake-build-debug",
+  "command": "E:\\CLION2~1.4\\bin\\mingw\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/include -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/src -IE:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -fdiagnostics-color=always -Wall -o raylib-5.5\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\win32_time.c.obj -c E:\\CLionProjects\\starship\\raylib-5.5\\src\\external\\glfw\\src\\win32_time.c",
+  "file": "E:/CLionProjects/starship/raylib-5.5/src/external/glfw/src/win32_time.c",
+  "output": "E:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj"
+},
+{
+  "directory": "E:/CLionProjects/starship/cmake-build-debug",
+  "command": "E:\\CLION2~1.4\\bin\\mingw\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/include -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/src -IE:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -fdiagnostics-color=always -Wall -o raylib-5.5\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\win32_thread.c.obj -c E:\\CLionProjects\\starship\\raylib-5.5\\src\\external\\glfw\\src\\win32_thread.c",
+  "file": "E:/CLionProjects/starship/raylib-5.5/src/external/glfw/src/win32_thread.c",
+  "output": "E:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj"
+},
+{
+  "directory": "E:/CLionProjects/starship/cmake-build-debug",
+  "command": "E:\\CLION2~1.4\\bin\\mingw\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/include -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/src -IE:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -fdiagnostics-color=always -Wall -o raylib-5.5\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\win32_init.c.obj -c E:\\CLionProjects\\starship\\raylib-5.5\\src\\external\\glfw\\src\\win32_init.c",
+  "file": "E:/CLionProjects/starship/raylib-5.5/src/external/glfw/src/win32_init.c",
+  "output": "E:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj"
+},
+{
+  "directory": "E:/CLionProjects/starship/cmake-build-debug",
+  "command": "E:\\CLION2~1.4\\bin\\mingw\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/include -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/src -IE:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -fdiagnostics-color=always -Wall -o raylib-5.5\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\win32_joystick.c.obj -c E:\\CLionProjects\\starship\\raylib-5.5\\src\\external\\glfw\\src\\win32_joystick.c",
+  "file": "E:/CLionProjects/starship/raylib-5.5/src/external/glfw/src/win32_joystick.c",
+  "output": "E:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj"
+},
+{
+  "directory": "E:/CLionProjects/starship/cmake-build-debug",
+  "command": "E:\\CLION2~1.4\\bin\\mingw\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/include -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/src -IE:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -fdiagnostics-color=always -Wall -o raylib-5.5\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\win32_monitor.c.obj -c E:\\CLionProjects\\starship\\raylib-5.5\\src\\external\\glfw\\src\\win32_monitor.c",
+  "file": "E:/CLionProjects/starship/raylib-5.5/src/external/glfw/src/win32_monitor.c",
+  "output": "E:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj"
+},
+{
+  "directory": "E:/CLionProjects/starship/cmake-build-debug",
+  "command": "E:\\CLION2~1.4\\bin\\mingw\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/include -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/src -IE:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -fdiagnostics-color=always -Wall -o raylib-5.5\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\win32_window.c.obj -c E:\\CLionProjects\\starship\\raylib-5.5\\src\\external\\glfw\\src\\win32_window.c",
+  "file": "E:/CLionProjects/starship/raylib-5.5/src/external/glfw/src/win32_window.c",
+  "output": "E:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj"
+},
+{
+  "directory": "E:/CLionProjects/starship/cmake-build-debug",
+  "command": "E:\\CLION2~1.4\\bin\\mingw\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/include -IE:/CLionProjects/starship/raylib-5.5/src/external/glfw/src -IE:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -fdiagnostics-color=always -Wall -o raylib-5.5\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\wgl_context.c.obj -c E:\\CLionProjects\\starship\\raylib-5.5\\src\\external\\glfw\\src\\wgl_context.c",
+  "file": "E:/CLionProjects/starship/raylib-5.5/src/external/glfw/src/wgl_context.c",
+  "output": "E:/CLionProjects/starship/cmake-build-debug/raylib-5.5/raylib/external/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj"
+}
+]
