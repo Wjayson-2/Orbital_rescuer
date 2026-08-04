@@ -25,8 +25,9 @@ std::vector<Vec2> trail_;
 Simulation::Simulation() = default;
 
 void Simulation::reset() {
-    trail_.clear();
+
     craft_.reset();
+    trail_.clear();
     missionTime_ = 0.0;
     state_ = MissionState::Briefing;
 }
@@ -37,12 +38,6 @@ void Simulation::start() {
     }
 }
 
-void trail_update(Vec2 current_position) {
-    for (int i = 0; i < kMaxTrailPoints; ++i) {
-        trail_[i] = trail_[i + 1];
-    }
-    trail_[kMaxTrailPoints] = current_position;
-}
 
 void Simulation::update(double dt, const ControlInput& input) {
     if (state_ != MissionState::Running) {
@@ -51,7 +46,7 @@ void Simulation::update(double dt, const ControlInput& input) {
     if (trail_.size() < kMaxTrailPoints) {
         trail_.push_back(craft_.position());
     }else if (trail_.size() == kMaxTrailPoints) {
-        trail_update(craft_.position());
+        trail_.erase(trail_.begin());
     }else {
         throw std::logic_error("Simulation::update(): Trail size too large");
     }

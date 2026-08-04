@@ -61,9 +61,11 @@ void drawTrail() {
             //Vector2 start{static_cast<float>(trail_[i].x), static_cast<float>(trail_[i].y)};
             //Vector2 end{static_cast<float>(trail_[i+1].x), static_cast<float>(trail_[i+1].y)};
             float alpha = 1.0f * i / trail_.size();
-            if (trail_[i].x!=trail_[i+1].x && trail_[i].y!=trail_[i+1].y ) {
-            DrawLineV(worldToScreen(trail_[i]), worldToScreen(trail_[i+1]), Fade(SKYBLUE, alpha));}
+
+            DrawLineV(worldToScreen(trail_[i]), worldToScreen(trail_[i+1]), Fade(SKYBLUE, alpha));
         }
+    }else {
+        return;
     }
 }
 
