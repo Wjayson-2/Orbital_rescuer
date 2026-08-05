@@ -58,7 +58,7 @@ void loadMissionConfig(
             file >> config.startPosition.y;
             if(file.fail())
             {
-                std::cout << "Startposition wrong\n";
+                std::cout << "Start position wrong\n";
             }else{
                 config.pos_initialized = true;
             };
@@ -131,7 +131,21 @@ void loadMissionConfig(
             }else{
                 config.dockingLimits_initialized = true;
             }
+        }else if(key == "planet")
+        {
+            file >> config.planetspec.position.x;
+            file >> config.planetspec.position.y;
+            file >> config.planetspec.radius;
+            file >> config.planetspec.mass;
+
+            if(file.fail())
+            {
+                std::cout << "Planet wrong\n";
+            }else{
+                config.planetspec_initialized = true;
+            };
         }
+
         else if(key[0] == '#') {
             continue;
         }
@@ -188,6 +202,10 @@ bool checkConfig(const MissionConfig& config) {
     }
     if (!config.dockingLimits_initialized) {
         cout<<"Docking limits missing\n";
+        return false;
+    }
+    if (!config.planetspec_initialized) {
+        cout<<"Planet spec missing\n";
         return false;
     }
     return true;

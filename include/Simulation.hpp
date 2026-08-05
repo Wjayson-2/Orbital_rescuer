@@ -38,7 +38,6 @@ public:
     void start();
     std::string statusMessage() const;
 
-    Vec2 dockingPortPosition() const { return portPosition(); }
 
 private:
     Spacecraft craft_;

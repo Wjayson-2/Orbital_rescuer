@@ -6,6 +6,8 @@ startAngleRadians 0
 startFuel 600
 timeLimit 120
 DockingLimits 38 8 0.25
+#captureDistance,safeSpeed,safeAngleRadians
 angularVelocity 0
 hullIntegrity 100.0
-#captureDistance,safeSpeed,safeAngleRadians
+planet 50 20 3 20
+#x,y,radius,mass

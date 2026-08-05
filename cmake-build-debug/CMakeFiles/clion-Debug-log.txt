@@ -1,14 +1,14 @@
-"C:\Program Files\JetBrains\CLion 2026.1.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "MinGW Makefiles" -S C:\Users\WJays\Desktop\Orbital_rescuer -B C:\Users\WJays\Desktop\Orbital_rescuer\cmake-build-debug
+"E:\CLion 2026.1.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=E:/CLion 2026.1.4/bin/ninja/win/x64/ninja.exe" -G Ninja -S E:\CLionProjects\starship -B E:\CLionProjects\starship\cmake-build-debug
 -- The C compiler identification is GNU 13.1.0
 -- The CXX compiler identification is GNU 13.1.0
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
--- Check for working C compiler: C:/Program Files/JetBrains/CLion 2026.1.4/bin/mingw/bin/gcc.exe - skipped
+-- Check for working C compiler: E:/CLion 2026.1.4/bin/mingw/bin/gcc.exe - skipped
 -- Detecting C compile features
 -- Detecting C compile features - done
 -- Detecting CXX compiler ABI info
 -- Detecting CXX compiler ABI info - done
--- Check for working CXX compiler: C:/Program Files/JetBrains/CLion 2026.1.4/bin/mingw/bin/g++.exe - skipped
+-- Check for working CXX compiler: E:/CLion 2026.1.4/bin/mingw/bin/g++.exe - skipped
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
 CMake Deprecation Warning at raylib-5.5/CMakeLists.txt:1 (cmake_minimum_required):
@@ -40,6 +40,6 @@ CMake Deprecation Warning at raylib-5.5/CMakeLists.txt:1 (cmake_minimum_required
 -- Compiling with the flags:
 --   PLATFORM=PLATFORM_DESKTOP
 --   GRAPHICS=GRAPHICS_API_OPENGL_33
--- Configuring done (28.2s)
--- Generating done (1.1s)
--- Build files have been written to: C:/Users/WJays/Desktop/Orbital_rescuer/cmake-build-debug
+-- Configuring done (20.5s)
+-- Generating done (0.4s)
+-- Build files have been written to: E:/CLionProjects/starship/cmake-build-debug

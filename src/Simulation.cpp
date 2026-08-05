@@ -11,6 +11,9 @@
 namespace {
 
 constexpr int kMaxTrailPoints = 300;
+
+constexpr double kCraftCollisionRadius = 0;
+
 double wrappedAngle(double angle) {
     constexpr double pi = 3.14159265358979323846;
     while (angle > pi) angle -= 2.0 * pi;
@@ -58,14 +61,18 @@ void Simulation::update(double dt, const ControlInput& input) {
 }
 
 void pushback(Vec2 offset, double distance, Spacecraft& craft_) {
-    double penetration = (config_global.dockingLimits.captureDistance) - distance;
+    double penetration = (config_global.dockingLimits.captureDistance + kCraftCollisionRadius) - distance;
     Vec2 push_to;
     Vec2 collision_normal = offset.normalized();
     Vec2 push_v;
+
     push_to = craft_.position() + collision_normal * penetration;
     craft_.setPosition(push_to);
     push_v = ((-craft_.velocity()).normalized()) * craft_.velocity().magnitude();
-    craft_.setVelocity(push_v);
+    if (dot(craft_.velocity().normalized(), craft_.velocity()) > 0.0) {
+        craft_.setVelocity(push_v);
+    }
+
 }
 
 DockingResult Simulation::evaluateDocking() const {
@@ -77,8 +84,11 @@ DockingResult Simulation::evaluateDocking() const {
 
     // The station's docking axis points left, so the craft should point right.
     const double angleError = std::abs(wrappedAngle(craft_.angleRadians()));
+
+    const double collisionDistance = config_global.dockingLimits.captureDistance + kCraftCollisionRadius;
+
     return {
-        distance <= config_global.dockingLimits.captureDistance,
+        distance <= collisionDistance,
         speed <= config_global.dockingLimits.safeSpeed,
         angleError <= config_global.dockingLimits.safeAngleRadians,
     };

@@ -72,7 +72,7 @@ void drawTrail() {
 
 void drawSpacecraft(const Spacecraft& craft, const ControlInput& input) {
     const Vector2 p = worldToScreen(craft.position());
-
+    DrawCircleV(p, 3.0f, RED);
     // Convert world rotation to screen rotation.
     // Screen Y increases downward, so the angle must be negated once.
     const float screenAngle =
@@ -115,17 +115,19 @@ void drawTelemetry(const Simulation& sim) {
     const Spacecraft& craft = sim.craft();
     const Vec2 relative = sim.stationPosition() - craft.position();
 
-    DrawRectangle(18, 18, 330, 248, Fade(BLACK, 0.72f));
-    DrawRectangleLines(18, 18, 330, 248, Fade(SKYBLUE, 0.8f));
+    DrawRectangle(18, 18, 330, 276, Fade(BLACK, 0.72f));
+    DrawRectangleLines(18, 18, 330, 276, Fade(SKYBLUE, 0.8f));
 
     DrawText("FLIGHT COMPUTER", 34, 32, 24, SKYBLUE);
-    DrawText(("MISSION TIME  " + fixed(sim.missionTime(), 1) + " s").c_str(), 34, 70, 20, RAYWHITE);
+
+
+    DrawText(("MISSION TIME  " + fixed(sim.missionTime(), 1) + "/" + fixed(config_global.timeLimit) + " s").c_str(), 34, 70, 20, (sim.missionTime()/config_global.timeLimit < 0.75)? GREEN : RED);
     DrawText(("DISTANCE      " + fixed(relative.magnitude(), 1) + " m").c_str(), 34, 98, 20, RAYWHITE);
     DrawText(("SPEED         " + fixed(craft.velocity().magnitude(), 2) + " m/s").c_str(), 34, 126, 20, RAYWHITE);
     DrawText(("ANGLE         " + fixed(craft.angleRadians() * RAD2DEG, 1) + " deg").c_str(), 34, 154, 20, RAYWHITE);
     DrawText(("FUEL          " + fixed(craft.fuel(), 1) + " kg").c_str(), 34, 182, 20, YELLOW);
-    DrawText(("HULL          " + fixed(craft.hullIntegrity(), 0) + " %").c_str(), 34, 210, 20,
-             craft.hullIntegrity() > 35.0 ? GREEN : RED);
+    DrawText(("HULL          " + fixed(craft.hullIntegrity(), 0) + " %").c_str(), 34, 210, 20, craft.hullIntegrity() > 35.0 ? GREEN : RED);
+
 
     const DockingResult docking = sim.evaluateDocking();
     DrawText(docking.speedSafe ? "SPEED SAFE" : "SPEED HIGH", 900, 28, 20,
@@ -199,7 +201,7 @@ int main() {
         ClearBackground(Color{4, 8, 20, 255});
 
         drawStars();
-        drawStation(simulation.stationPosition(), simulation.dockingPortPosition());
+        drawStation(simulation.stationPosition(), simulation.portPosition());
         drawSpacecraft(simulation.craft(), input);
         drawTelemetry(simulation);
         drawHelp();

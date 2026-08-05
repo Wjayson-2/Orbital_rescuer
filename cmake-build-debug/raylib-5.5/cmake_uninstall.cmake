@@ -1,14 +1,14 @@
-if(NOT EXISTS "C:/Users/WJays/Desktop/Orbital_rescuer/cmake-build-debug/install_manifest.txt")
-  message(FATAL_ERROR "Cannot find install manifest: C:/Users/WJays/Desktop/Orbital_rescuer/cmake-build-debug/install_manifest.txt")
+if(NOT EXISTS "E:/CLionProjects/starship/cmake-build-debug/install_manifest.txt")
+  message(FATAL_ERROR "Cannot find install manifest: E:/CLionProjects/starship/cmake-build-debug/install_manifest.txt")
 endif()
 
-file(READ "C:/Users/WJays/Desktop/Orbital_rescuer/cmake-build-debug/install_manifest.txt" files)
+file(READ "E:/CLionProjects/starship/cmake-build-debug/install_manifest.txt" files)
 string(REGEX REPLACE "\n" ";" files "${files}")
 foreach(file ${files})
   message(STATUS "Uninstalling $ENV{DESTDIR}${file}")
   if(IS_SYMLINK "$ENV{DESTDIR}${file}" OR EXISTS "$ENV{DESTDIR}${file}")
     exec_program(
-      "C:/Program Files/JetBrains/CLion 2026.1.4/bin/cmake/win/x64/bin/cmake.exe" ARGS "-E remove \"$ENV{DESTDIR}${file}\""
+      "E:/CLion 2026.1.4/bin/cmake/win/x64/bin/cmake.exe" ARGS "-E remove \"$ENV{DESTDIR}${file}\""
       OUTPUT_VARIABLE rm_out
       RETURN_VALUE rm_retval
       )

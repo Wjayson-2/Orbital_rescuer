@@ -13,6 +13,11 @@ struct DockingLimits {
 };
 
 
+struct Planet {
+    Vec2 position{};
+    double radius{};
+    double mass{};
+};
 
 struct MissionConfig {
     std::string name{};
@@ -29,6 +34,8 @@ struct MissionConfig {
 
     DockingLimits dockingLimits{};
 
+    Planet planetspec{};
+
     bool pos_initialized{false};
     bool name_initialized{false};
     bool callsign_initialized{false};
@@ -39,6 +46,7 @@ struct MissionConfig {
     bool angularVelocity_initialized{false};
     bool hullIntegrity_initialized{false};
     bool dockingLimits_initialized{false};
+    bool planetspec_initialized{false};
 
 };
 void loadMissionConfig(
