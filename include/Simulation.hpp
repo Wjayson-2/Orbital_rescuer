@@ -2,6 +2,7 @@
 #include "Spacecraft.hpp"
 #include <string>
 #include <vector>
+#include "vec2.hpp"
 
 enum class MissionState {
     Briefing,
@@ -36,6 +37,8 @@ public:
 
     void start();
     std::string statusMessage() const;
+
+    Vec2 dockingPortPosition() const { return portPosition(); }
 
 private:
     Spacecraft craft_;

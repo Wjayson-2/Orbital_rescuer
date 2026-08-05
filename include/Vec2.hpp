@@ -9,6 +9,7 @@ struct Vec2 {
     Vec2 operator-(const Vec2& rhs) const { return {x - rhs.x, y - rhs.y}; }
     Vec2 operator*(double scalar) const { return {x * scalar, y * scalar}; }
     Vec2 operator/(double scalar) const { return {x / scalar, y / scalar}; }
+    Vec2 operator-() const { return {-x, -y}; }
 
     Vec2& operator+=(const Vec2& rhs) {
         x += rhs.x;

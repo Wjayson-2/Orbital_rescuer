@@ -11,6 +11,8 @@ class Spacecraft {
 public:
     Spacecraft();
 
+    double cooldown_ = 0;
+
     void reset();
     void update(double dt, const ControlInput& input);
     void setPosition(const Vec2& position);

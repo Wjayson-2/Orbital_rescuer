@@ -1,0 +1,8 @@
+# CMake build files
+cmake-build-*/
+
+# CLion files
+.idea/
+
+# Build output
+build/

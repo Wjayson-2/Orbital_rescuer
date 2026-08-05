@@ -41,16 +41,17 @@ void drawStars() {
     }
 }
 
-void drawStation(const Vec2& position) {
+void drawStation(const Vec2& position, const Vec2& port_) {
     const Vector2 p = worldToScreen(position);
+    const Vector2 port = worldToScreen(port_);
 
     DrawRectangle(static_cast<int>(p.x - 46), static_cast<int>(p.y - 24), 92, 48, DARKGRAY);
     DrawRectangle(static_cast<int>(p.x - 8), static_cast<int>(p.y - 44), 16, 88, GRAY);
     DrawRectangle(static_cast<int>(p.x - 112), static_cast<int>(p.y - 12), 62, 24, BLUE);
     DrawRectangle(static_cast<int>(p.x + 50), static_cast<int>(p.y - 12), 62, 24, BLUE);
 
-    DrawCircleLines(static_cast<int>(p.x - 48), static_cast<int>(p.y), 24, SKYBLUE);
-    DrawCircleLines(static_cast<int>(p.x - 48), static_cast<int>(p.y), 37, Fade(SKYBLUE, 0.45f));
+    DrawCircleLines(static_cast<int>(port.x), static_cast<int>(port.y), config_global.dockingLimits.captureDistance, SKYBLUE);
+    DrawCircleLines(static_cast<int>(port.x), static_cast<int>(port.y), config_global.dockingLimits.captureDistance+13, Fade(SKYBLUE, 0.45f));
 
     DrawText("ARES RELAY", static_cast<int>(p.x - 34), static_cast<int>(p.y + 52), 16, LIGHTGRAY);
 }
@@ -198,7 +199,7 @@ int main() {
         ClearBackground(Color{4, 8, 20, 255});
 
         drawStars();
-        drawStation(simulation.stationPosition());
+        drawStation(simulation.stationPosition(), simulation.dockingPortPosition());
         drawSpacecraft(simulation.craft(), input);
         drawTelemetry(simulation);
         drawHelp();

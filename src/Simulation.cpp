@@ -59,11 +59,13 @@ void Simulation::update(double dt, const ControlInput& input) {
 
 void pushback(Vec2 offset, double distance, Spacecraft& craft_) {
     double penetration = (config_global.dockingLimits.captureDistance) - distance;
-    Vec2 push;
     Vec2 push_to;
     Vec2 collision_normal = offset.normalized();
+    Vec2 push_v;
     push_to = craft_.position() + collision_normal * penetration;
     craft_.setPosition(push_to);
+    push_v = ((-craft_.velocity()).normalized()) * craft_.velocity().magnitude();
+    craft_.setVelocity(push_v);
 }
 
 DockingResult Simulation::evaluateDocking() const {
@@ -82,6 +84,8 @@ DockingResult Simulation::evaluateDocking() const {
     };
 }
 
+
+
 void Simulation::checkDocking() {
     const Vec2 offset = craft_.position() - portPosition();
     const double distance = offset.magnitude();
@@ -95,12 +99,19 @@ void Simulation::checkDocking() {
         return;
     }
 
-    craft_.applyCollisionDamage(craft_.velocity().magnitude());
 
     if (distance < config_global.dockingLimits.captureDistance) {
+        std::cout<<distance<<std::endl;
         pushback(offset, distance, craft_);
+        if (craft_.cooldown_<=0) {
+
+            craft_.applyCollisionDamage(craft_.velocity().magnitude());
+            craft_.cooldown_ = 1.0;
+        }
     }
 }
+
+
 
 void Simulation::checkFailure() {
     const Vec2 p = craft_.position();
