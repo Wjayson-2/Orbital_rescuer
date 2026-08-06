@@ -27,12 +27,45 @@ std::vector<Vec2> trail_;
 
 Simulation::Simulation() = default;
 
+void Simulation::setGameStatus(GameStatus newStatus) {
+    gameStatus_ = newStatus;
+}
+
+void Simulation::speedUp() {
+    if (timeScale_ == TimeScale::x1) {
+        timeScale_ = TimeScale::x2;
+    }else if (timeScale_ == TimeScale::x2) {
+        timeScale_ = TimeScale::x5;
+    }else {
+        timeScale_ = TimeScale::x1;
+    }
+}
+
+void Simulation::speedDn() {
+    if (timeScale_ == TimeScale::x5) {
+        timeScale_ = TimeScale::x2;
+    }else if (timeScale_ == TimeScale::x2) {
+        timeScale_ = TimeScale::x1;
+    }else {
+        timeScale_ = TimeScale::x5;
+    }
+}
+
+void Simulation::updateStat(Spacecraft craft_) {
+    if (missionStats_.maxSpeed < craft_.velocity().magnitude()) {
+        missionStats_.maxSpeed = craft_.velocity().magnitude();
+    }
+    missionStats_.finalFuel = craft_.fuel;
+
+}
+
 void Simulation::reset() {
 
     craft_.reset();
     trail_.clear();
     missionTime_ = 0.0;
     state_ = MissionState::Briefing;
+    timeScale_ = TimeScale::x1;
 }
 
 void Simulation::start() {
@@ -53,11 +86,26 @@ void Simulation::update(double dt, const ControlInput& input) {
     }else {
         throw std::logic_error("Simulation::update(): Trail size too large");
     }
-    missionTime_ += dt;
-    craft_.update(dt, input);
+    int time_scale;
+    if (timeScale_ == TimeScale::x5) {
+        time_scale = 5;
+    }else if (timeScale_ == TimeScale::x2) {
+        time_scale = 2;
+    }else {
+        time_scale = 1;
+    }
 
-    checkDocking();
-    checkFailure();
+    for (int i = 0; i < time_scale; ++i) {
+        craft_.update(dt, input);
+        missionTime_ += dt;
+
+        checkDocking();
+        checkFailure();
+
+        if (state_ != MissionState::Running) {
+            break;
+        }
+    }
 }
 
 void pushback(Vec2 offset, double distance, Spacecraft& craft_) {
@@ -106,6 +154,7 @@ void Simulation::checkDocking() {
 
     if (result.speedSafe && result.angleSafe) {
         state_ = MissionState::Docked;
+        setGameStatus(GameStatus::Results);
         return;
     }
 
@@ -125,18 +174,22 @@ void Simulation::checkDocking() {
 
 void Simulation::checkFailure() {
     const Vec2 p = craft_.position();
+    double Distance = (craft_.position() - config_global.planetspec.position).magnitude();
 
-    if (craft_.isDestroyed() || std::abs(p.x) > 1000.0 || std::abs(p.y) > 700.0) {
+    if (craft_.isDestroyed() || std::abs(p.x) > 1000.0 || std::abs(p.y) > 700.0 || Distance < config_global.planetspec.radius) {
         state_ = MissionState::Failed;
+        setGameStatus(GameStatus::Results);
     }
 
     if (missionTime_ > config_global.timeLimit) {
         state_ = MissionState::Failed;
+        setGameStatus(GameStatus::Results);
     }
 }
 
 int Simulation::score() const {
     if (state_ != MissionState::Docked) {
+
         return 0;
     }
 
@@ -147,7 +200,7 @@ int Simulation::score() const {
     return fuelScore + timeScore + hullScore;
 }
 
-std::string Simulation::statusMessage() const {
+std::string Simulation::statusMessage() const{
     switch (state_) {
         case MissionState::Briefing:
             return "PRESS ENTER TO START";

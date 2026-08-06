@@ -41,7 +41,25 @@ void Spacecraft::update(double dt, const ControlInput& input) {
     const Vec2 forward{std::cos(angleRadians_), std::sin(angleRadians_)};
     const Vec2 right{-forward.y, forward.x};
 
+    double Distance;
+
+    const double kG = 6.67430e-11; //gravitational constant
+
+    Distance = (position_ - config_global.planetspec.position).magnitude(); //distance between planet and ship
+
+    double gravity_magnitude;
+
+    if (Distance > config_global.planetspec.radius) {
+        gravity_magnitude = (kG * config_global.mass * config_global.planetspec.mass)/pow(Distance, 2);
+    }else {
+        gravity_magnitude = (kG * config_global.mass * config_global.planetspec.mass)/pow(config_global.planetspec.radius, 2);
+    }
+
+    Vec2 gravitational_pull = (-position_ + config_global.planetspec.position).normalized() * gravity_magnitude; //direction of gravity
+
     Vec2 force{};
+
+    force += gravitational_pull;
 
     if (hasFuel()) {
         force += forward * (kMainThrust * mainThrottle);

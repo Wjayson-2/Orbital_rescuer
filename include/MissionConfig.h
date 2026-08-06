@@ -29,6 +29,7 @@ struct MissionConfig {
     double startAngleRadians{};
     double startFuel{};
     double timeLimit{};
+    double mass{};
     double angularVelocity{};
     double hullIntegrity{};
 
@@ -47,6 +48,7 @@ struct MissionConfig {
     bool hullIntegrity_initialized{false};
     bool dockingLimits_initialized{false};
     bool planetspec_initialized{false};
+    bool mass_initialized{false};
 
 };
 void loadMissionConfig(

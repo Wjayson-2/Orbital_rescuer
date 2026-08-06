@@ -115,6 +115,13 @@ void loadMissionConfig(
             }else{
                 config.angularVelocity_initialized = true;
             }
+        }else if (key == "mass") {
+            file >> config.mass;
+            if(file.fail()) {
+                std::cout << "Mass invalid\n";
+            }else{
+                config.mass_initialized = true;
+            }
         }else if (key == "hullIntegrity") {
             file >> config.hullIntegrity;
             if(file.fail()) {
@@ -166,6 +173,10 @@ void loadMissionConfig(
 bool checkConfig(const MissionConfig& config) {
     if (!config.time_initialized) {
         cout<<"Time limit missing\n";
+        return false;
+    }
+    if (!config.mass_initialized) {
+        cout<<"Mass missing\n";
         return false;
     }
     if (!config.pos_initialized) {

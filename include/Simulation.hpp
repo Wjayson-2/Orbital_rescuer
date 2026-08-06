@@ -4,6 +4,27 @@
 #include <vector>
 #include "vec2.hpp"
 
+enum class TimeScale {
+    x1,
+    x2,
+    x5
+};
+
+enum class GameStatus {
+    MainMenu,
+    MissionSelect,
+    Flight,
+    Results,
+    Stats
+};
+
+struct MissionStats {
+    double finalFuel{};
+    double maxSpeed{};
+    double impactSpeed{};
+    double hullIntegrity{};
+};
+
 enum class MissionState {
     Briefing,
     Running,
@@ -28,6 +49,7 @@ public:
     Spacecraft& craft() { return craft_; }
 
     MissionState state() const { return state_; }
+    TimeScale gettimescale() const { return timeScale_; }
     const Vec2& stationPosition() const { return stationPosition_; }
     const Vec2& portPosition() const { return portPosition_; }
 
@@ -36,11 +58,19 @@ public:
     int score() const;
 
     void start();
+    void speedUp();
+    void speedDn();
     std::string statusMessage() const;
 
+    const GameStatus getGameStatus() const {return gameStatus_; }
+    void setGameStatus(GameStatus newStatus);
+    void updateStat(Spacecraft craft_);
 
 private:
+    MissionStats missionStats_;
+    TimeScale timeScale_;
     Spacecraft craft_;
+    GameStatus gameStatus_{GameStatus::MainMenu};
     Vec2 stationPosition_{290.0, 0.0};
     Vec2 portPosition_{290.0-48, 0.0};
     MissionState state_{MissionState::Briefing};
