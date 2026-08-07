@@ -23,6 +23,7 @@ struct MissionStats {
     double maxSpeed{};
     double impactSpeed{};
     double hullIntegrity{};
+    double missionTime{};
 };
 
 enum class MissionState {
@@ -64,16 +65,18 @@ public:
 
     const GameStatus getGameStatus() const {return gameStatus_; }
     void setGameStatus(GameStatus newStatus);
-    void updateStat(Spacecraft craft_);
+    void updateStat();
+    const MissionStats getMissionStats() const {return missionStats_;}
+    const MissionState getState() const {return state_;}
 
 private:
     MissionStats missionStats_;
     TimeScale timeScale_;
     Spacecraft craft_;
-    GameStatus gameStatus_{GameStatus::MainMenu};
+    GameStatus gameStatus_{GameStatus::MainMenu};//progress of the game
     Vec2 stationPosition_{290.0, 0.0};
     Vec2 portPosition_{290.0-48, 0.0};
-    MissionState state_{MissionState::Briefing};
+    MissionState state_{MissionState::Briefing};//state of ship in mission
     double missionTime_{0.0};
 
     void checkDocking();

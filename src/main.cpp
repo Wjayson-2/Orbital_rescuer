@@ -910,7 +910,7 @@ int main() {
         }
         else if (simulation.getGameStatus() == GameStatus::Flight) {
 
-            updateStat();
+
 
             timescalex1.update();
 
@@ -950,6 +950,7 @@ int main() {
             if (!paused) {
                 const double dt = std::min(GetFrameTime(), 0.033f);
                 simulation.update(dt, input);
+
             }
         }
 
@@ -1003,16 +1004,17 @@ int main() {
         }else if (simulation.getGameStatus() == GameStatus::Stats) {
             BeginDrawing();
             ClearBackground(Color{4, 8, 20, 255});
-            drawStatsMenu(true,                    // missionSuccessful
-    "ARES RELAY · COMPLETE",
+            MissionStats stats = simulation.getMissionStats();
+            drawStatsMenu(simulation.getState()==MissionState::Docked ? true:false,// missionSuccessful
+    config_global.name,
     config_global.startFuel,                   // startFuel
-    67.5,                    // finalFuel
-    46.28,                   // missionTime
-    18.42,                   // maxSpeed
-    2.36,                    // impactSpeed
-    3.00,                    // safeImpactSpeed
-    84.0,                    // hullIntegrity
-    8450     );
+    stats.finalFuel,                    // finalFuel
+    stats.missionTime,                   // missionTime
+    stats.maxSpeed,                   // maxSpeed
+    stats.impactSpeed,                    // impactSpeed
+    config_global.dockingLimits.safeSpeed,                    // safeImpactSpeed
+    stats.hullIntegrity,                    // hullIntegrity
+    simulation.score()    );
             EndDrawing();
         }
 

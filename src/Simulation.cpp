@@ -51,11 +51,25 @@ void Simulation::speedDn() {
     }
 }
 
-void Simulation::updateStat(Spacecraft craft_) {
+// void Simulation::updateStat(Simulation simulation) {
+//     if (missionStats_.maxSpeed < simulation.craft_.velocity().magnitude()) {
+//         missionStats_.maxSpeed = simulation.craft_.velocity().magnitude();
+//     }
+//     missionStats_.finalFuel = simulation.craft_.fuel();
+//     missionStats_.impactSpeed = simulation.craft_.velocity().magnitude();
+//     missionStats_.hullIntegrity = simulation.craft_.hullIntegrity();
+//     missionStats_.missionTime = simulation.missionTime();
+//
+// }
+
+void Simulation::updateStat() {
     if (missionStats_.maxSpeed < craft_.velocity().magnitude()) {
         missionStats_.maxSpeed = craft_.velocity().magnitude();
     }
-    missionStats_.finalFuel = craft_.fuel;
+    missionStats_.finalFuel = craft_.fuel();
+    missionStats_.impactSpeed = craft_.velocity().magnitude();
+    missionStats_.hullIntegrity = craft_.hullIntegrity();
+    missionStats_.missionTime = missionTime();
 
 }
 
@@ -63,6 +77,7 @@ void Simulation::reset() {
 
     craft_.reset();
     trail_.clear();
+    missionStats_.missionTime = missionTime_;
     missionTime_ = 0.0;
     state_ = MissionState::Briefing;
     timeScale_ = TimeScale::x1;
@@ -98,7 +113,7 @@ void Simulation::update(double dt, const ControlInput& input) {
     for (int i = 0; i < time_scale; ++i) {
         craft_.update(dt, input);
         missionTime_ += dt;
-
+        updateStat();
         checkDocking();
         checkFailure();
 
@@ -176,12 +191,14 @@ void Simulation::checkFailure() {
     const Vec2 p = craft_.position();
     double Distance = (craft_.position() - config_global.planetspec.position).magnitude();
 
-    if (craft_.isDestroyed() || std::abs(p.x) > 1000.0 || std::abs(p.y) > 700.0 || Distance < config_global.planetspec.radius) {
+    if (craft_.isDestroyed() || std::abs(p.x) > 1000.0 || std::abs(p.y) > 700.0) {
         state_ = MissionState::Failed;
         setGameStatus(GameStatus::Results);
-    }
-
-    if (missionTime_ > config_global.timeLimit) {
+    }else if (missionTime_ > config_global.timeLimit) {
+        state_ = MissionState::Failed;
+        setGameStatus(GameStatus::Results);
+    }else if (Distance < config_global.planetspec.radius) {
+        missionStats_.hullIntegrity = 0;
         state_ = MissionState::Failed;
         setGameStatus(GameStatus::Results);
     }
