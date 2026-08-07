@@ -185,7 +185,11 @@ void Simulation::checkDocking() {
     }
 }
 
-
+void Simulation::use_AP(Spacecraft craft_) {
+    if (AP_.isEngaged()) {
+        AP_.steer(craft_);
+    }
+}
 
 void Simulation::checkFailure() {
     const Vec2 p = craft_.position();

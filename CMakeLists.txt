@@ -21,7 +21,9 @@ add_executable(orbital_rescue
         src/MissionConfig.cpp
         include/buttons.h
         src/buttons.cpp
-        src/buttons.h
+        include/AP.h
+        src/AO.cpp
+        src/AP.cpp
 )
 
 target_include_directories(

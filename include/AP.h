@@ -1,0 +1,29 @@
+//
+// Created by WJays on 2026/8/7.
+//
+#ifndef ORBITALRESCUESTARTER_AP_H
+#define ORBITALRESCUESTARTER_AP_H
+#include "Spacecraft.hpp"
+
+enum class AP_status {
+    Approach, //
+    Brake,
+    Align,
+    Final_dock
+};
+
+struct AP {
+public:
+    void engage(bool state);
+    bool isEngaged() const {return engaged_;};
+    AP_status getStatus() const {return status_;};
+    void setStatus(AP_status newStatus) {status_ = newStatus;};
+    void steer(Spacecraft craft_);
+
+private:
+    AP_status status_{AP_status::Approach};
+    bool engaged_ = false;
+
+};
+
+#endif //ORBITALRESCUESTARTER_AP_H

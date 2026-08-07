@@ -10,7 +10,7 @@
 #include <vector>
 #include "MissionConfig.h"
 #include "Buttons.h"
-
+#include "AP.h"
 
 
 
@@ -119,9 +119,9 @@ constexpr double kWorldScale = 1.0;
         .visible = true
     };
 
-    Button exitButton{
+    Button trailButton{
         .bounds = Rectangle{520.0f, 640.0f, 240.0f, 52.0f},
-        .text = "EXIT GAME",
+        .text = "SHOW TRAIL",
         .fontSize = 22,
         .visible = true
     };
@@ -133,6 +133,14 @@ constexpr double kWorldScale = 1.0;
         .visible = true
     };
     //Draw stat buttons
+    //_____________________________________________
+    Button returnButton{
+        .bounds = Rectangle{520.0f, 640.0f, 240.0f, 52.0f},
+        .text = "RETURN",
+        .fontSize = 22,
+        .visible = true
+    };
+    //Back
     //_____________________________________________
 Vector2 worldToScreen(const Vec2& world) {
     return {
@@ -278,6 +286,8 @@ void drawButtons() {
 
 ControlInput readControls() {
     ControlInput input;
+
+
 
     if (IsKeyDown(KEY_W)) {
         input.mainThrottle = 1.0;
@@ -833,7 +843,7 @@ void drawStatsMenu(
     // Buttons
     retryButton_2.draw();
     selectMissionButton_2.draw();
-    exitButton.draw();
+    trailButton.draw();
 }
 
 }
@@ -873,14 +883,14 @@ int main() {
         }else if (simulation.getGameStatus() == GameStatus::Stats) {
             retryButton_2.update();
             selectMissionButton_2.update();
-            exitButton.update();
+            trailButton.update();
             if (retryButton_2.isClicked()) {
                 simulation.setGameStatus(GameStatus::Flight);
                 simulation.reset();
             }else if (selectMissionButton_2.isClicked()) {
                 simulation.setGameStatus(GameStatus::MissionSelect);
-            }else if (exitButton.isClicked()) {
-                break;
+            }else if (trailButton.isClicked()) {
+                simulation.setGameStatus(GameStatus::Trail);
             }
 
         }
@@ -906,6 +916,11 @@ int main() {
             }
             if (missionBackButton.isClicked()) {
                 simulation.setGameStatus(GameStatus::MainMenu);
+            }
+        }else if (simulation.getGameStatus() == GameStatus::Trail) {
+            returnButton.update();
+            if (returnButton.isClicked()) {
+                simulation.setGameStatus(GameStatus::Stats);
             }
         }
         else if (simulation.getGameStatus() == GameStatus::Flight) {
@@ -942,9 +957,11 @@ int main() {
             if (IsKeyPressed(KEY_P)) {
                 paused = !paused;
             }
-
-            input = readControls();
-
+            if (!simulation.APisENGAGED()) {
+                input = readControls();
+            }else {
+                input = simulation.use_AP(simulation.craft());
+            }
 
 
             if (!paused) {
@@ -1006,6 +1023,7 @@ int main() {
             ClearBackground(Color{4, 8, 20, 255});
             MissionStats stats = simulation.getMissionStats();
             drawStatsMenu(simulation.getState()==MissionState::Docked ? true:false,// missionSuccessful
+
     config_global.name,
     config_global.startFuel,                   // startFuel
     stats.finalFuel,                    // finalFuel
@@ -1015,6 +1033,15 @@ int main() {
     config_global.dockingLimits.safeSpeed,                    // safeImpactSpeed
     stats.hullIntegrity,                    // hullIntegrity
     simulation.score()    );
+            EndDrawing();
+        }else if (simulation.getGameStatus() == GameStatus::Trail) {
+            BeginDrawing();
+            ClearBackground(Color{4, 8, 20, 255});
+            returnButton.draw();
+            drawTrail();
+            drawStars();
+            drawPlanet();
+            drawStation(simulation.stationPosition(), simulation.portPosition());
             EndDrawing();
         }
 

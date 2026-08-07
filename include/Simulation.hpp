@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include "vec2.hpp"
+#include "AP.h"
 
 enum class TimeScale {
     x1,
@@ -15,7 +16,8 @@ enum class GameStatus {
     MissionSelect,
     Flight,
     Results,
-    Stats
+    Stats,
+    Trail
 };
 
 struct MissionStats {
@@ -68,9 +70,12 @@ public:
     void updateStat();
     const MissionStats getMissionStats() const {return missionStats_;}
     const MissionState getState() const {return state_;}
+    ControlInput use_AP(Spacecraft craft_);
+    const bool APisENGAGED() const {return AP_.isEngaged();}
 
 private:
     MissionStats missionStats_;
+    AP AP_;
     TimeScale timeScale_;
     Spacecraft craft_;
     GameStatus gameStatus_{GameStatus::MainMenu};//progress of the game
