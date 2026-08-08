@@ -31,7 +31,7 @@ public:
     void getErrors(const Spacecraft craft_, const Vec2 portposition);
 
 private:
-    AP_status status_{AP_status::Approach};
+    AP_status status_{AP_status::Brake};
     bool engaged_ = false;
     errors errors_;
 
