@@ -12,17 +12,26 @@ enum class AP_status {
     Final_dock
 };
 
+struct errors {
+    double radian_error;
+    double radian_v_error;
+    double x_error;
+    double y_error;
+};
+
 struct AP {
 public:
     void engage(bool state);
     bool isEngaged() const {return engaged_;};
     AP_status getStatus() const {return status_;};
     void setStatus(AP_status newStatus) {status_ = newStatus;};
-    void steer(Spacecraft craft_);
+    ControlInput steer(Spacecraft craft_, Vec2 portPosition);
+    void getErrors(Spacecraft craft_, Vec2 portposition);
 
 private:
     AP_status status_{AP_status::Approach};
     bool engaged_ = false;
+    errors errors_;
 
 };
 

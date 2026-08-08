@@ -185,9 +185,9 @@ void Simulation::checkDocking() {
     }
 }
 
-void Simulation::use_AP(Spacecraft craft_) {
+ControlInput Simulation::use_AP(Spacecraft craft_) {
     if (AP_.isEngaged()) {
-        AP_.steer(craft_);
+        return AP_.steer(craft_, portPosition());
     }
 }
 
