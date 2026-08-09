@@ -1,16 +1,32 @@
 #include "AP.h"
 
 #include "MissionConfig.h"
-#include "Simulation.h"
+#include "Simulation.hpp"
 #include "Vec2.hpp"
+#include "wrapAngle.h"
 
-void AP::engage(bool state) {
-    engaged_ = state;
+void AP::engage() {
+    bool state;
+    state = engaged_;
+    engaged_ = !state;
 }
 
 ControlInput AP::steer(const Spacecraft craft_, const Vec2 portPosition) {
     ControlInput input;
+    Vec2 port = portPosition; //port location
+    Vec2 target_approach = port; //the approaching target, first bind it to the port.
+    target_approach.x -= (config_global.dockingLimits.captureDistance + 100);
     getErrors(craft_, portPosition);
+    if (status_ == AP_status::Approach) {
+        double kp = 1.5; //Rotation coefficient
+        Vec2 position_error = target_approach - craft_.position();
+        double desired_angle = atan2(position_error.y, position_error.x);
+        double radian_error = wrapAngle(desired_angle - craft_.angleRadians());//makes sure radian_error is minimized to -180-180 deg
+        double rotation_input = kp * radian_error - kp * craft_.angularVelocity();//combines both radian error and current angularv
+        input.rotationInput += rotation_input;
+
+    }
+    return input;
 
 }
 

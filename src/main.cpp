@@ -250,30 +250,102 @@ void drawTelemetry(const Simulation& sim) {
     DrawText("FLIGHT COMPUTER", 34, 32, 24, SKYBLUE);
 
 
-    DrawText(("MISSION TIME  " + fixed(sim.missionTime(), 1) + "/" + fixed(config_global.timeLimit) + " s").c_str(), 34, 70, 20, (sim.missionTime()/config_global.timeLimit < 0.75)? GREEN : RED);
-    DrawText(("DISTANCE      " + fixed(relative.magnitude(), 1) + " m").c_str(), 34, 98, 20, RAYWHITE);
-    DrawText(("SPEED         " + fixed(craft.velocity().magnitude(), 2) + " m/s").c_str(), 34, 126, 20, RAYWHITE);
-    DrawText(("ANGLE         " + fixed(craft.angleRadians() * RAD2DEG, 1) + " deg").c_str(), 34, 154, 20, RAYWHITE);
-    DrawText(("FUEL          " + fixed(craft.fuel(), 1) + " kg").c_str(), 34, 182, 20, YELLOW);
-    DrawText(("HULL          " + fixed(craft.hullIntegrity(), 0) + " %").c_str(), 34, 210, 20, craft.hullIntegrity() > 35.0 ? GREEN : RED);
-
+    DrawText(("MISSION TIME  "), 34, 70, 20, (sim.missionTime()/config_global.timeLimit < 0.75)? GREEN : RED);
+    DrawText(("DISTANCE" ), 34, 98, 20, RAYWHITE);
+    DrawText(("SPEED" ), 34, 126, 20, RAYWHITE);
+    DrawText(("ANGLE" ), 34, 154, 20, RAYWHITE);
+    DrawText(("FUEL" ), 34, 182, 20, YELLOW);
+    DrawText(("HULL" ), 34, 210, 20, craft.hullIntegrity() > 35.0 ? GREEN : RED);
+    DrawText((fixed(sim.missionTime(), 1) + "/" + fixed(config_global.timeLimit) + " s").c_str(), 200, 70, 20, (sim.missionTime()/config_global.timeLimit < 0.75)? GREEN : RED);
+    DrawText((fixed(relative.magnitude(), 1) + " m").c_str(), 200, 98, 20, RAYWHITE);
+    DrawText((fixed(craft.velocity().magnitude(), 2) + " m/s").c_str(), 200, 126, 20, RAYWHITE);
+    DrawText((fixed(craft.angleRadians() * RAD2DEG, 1) + " deg").c_str(), 200, 154, 20, RAYWHITE);
+    DrawText((fixed(craft.fuel(), 1) + " kg").c_str(), 200, 182, 20, YELLOW);
+    DrawText((fixed(craft.hullIntegrity(), 0) + " %").c_str(), 200, 210, 20, craft.hullIntegrity() > 35.0 ? GREEN : RED);
 
     const DockingResult docking = sim.evaluateDocking();
     DrawText(docking.speedSafe ? "SPEED SAFE" : "SPEED HIGH", 900, 28, 20,
              docking.speedSafe ? GREEN : RED);
     DrawText(docking.angleSafe ? "ALIGNMENT SAFE" : "ALIGNMENT BAD", 900, 56, 20,
              docking.angleSafe ? GREEN : RED);
+
+    DrawText(
+    "AUTOPILOT",
+        34,
+        238,
+        20,
+        sim.APisENGAGED() ? GREEN : LIGHTGRAY
+    );
+
+
+    DrawText(
+    sim.APisENGAGED() ? "ENGAGED" : "OFF",
+        200,
+        238,
+        20,
+        sim.APisENGAGED() ? GREEN : LIGHTGRAY
+    );
+
+    std::string text;
+
+
+
+    if (sim.getAPstatus() == AP_status::Abort) {
+        text = "Abort";
+    }else if (sim.getAPstatus() == AP_status::Align) {
+        text = "Align";
+    }else if (sim.getAPstatus() == AP_status::Approach) {
+        text = "Approach";
+    }else if (sim.getAPstatus() == AP_status::Brake) {
+        text = "Brake";
+    }else if (sim.getAPstatus() == AP_status::Docked) {
+        text = "Docked";
+    }else if (sim.getAPstatus() == AP_status::Final_approach) {
+        text = "Final Approach";
+    }
+    if (sim.APisENGAGED()) {
+        DrawText(
+       "STAGE",
+       34,
+       266,
+       20,
+       SKYBLUE
+   );
+
+        DrawText(
+        text.c_str(),
+        200,
+        266,
+        20,
+        text == "Abort" ? RED : SKYBLUE
+    );
+    }
+
 }
 
 void drawHelp() {
     std::string text;
     DrawRectangle(18, kScreenHeight - 106, 600, 84, Fade(BLACK, 0.70f));
-    DrawText("W: main engine     A,D: side thrusters    <: Speed Dn", 32, kScreenHeight - 92, 18, LIGHTGRAY);
+    DrawText("W: main engine     A,D: side thrusters    <: Speed Dn     Z: Autopilot", 32, kScreenHeight - 92, 18, LIGHTGRAY);
     DrawText("Q / E: rotate    R: reset    P: pause     >: Speed Up", 32, kScreenHeight - 66, 18, LIGHTGRAY);
     text = "Goal: dock below " + fixed(config_global.dockingLimits.safeSpeed,2) + " m/s and within " + fixed(config_global.dockingLimits.safeAngleRadians,2) + " rad.";
     DrawText(text.c_str(), 32, kScreenHeight - 40, 18, SKYBLUE);
     DrawText("M: MENU", 445, kScreenHeight - 40, 18, LIGHTGRAY);
 
+}
+
+int AP_flash_flag = 0; //to record the time the sign AP has flashed
+
+void drawAP(const Simulation& simulation) {
+    if (simulation.APisENGAGED()) {
+        AP_flash_flag += 1;
+        if ((AP_flash_flag % 60) < 30) { //turn on/off every 30 frames
+            DrawText("AP", kScreenWidth / 2 + 30, kScreenHeight - 92,  28, YELLOW);
+        }
+    }
+    if (AP_flash_flag == 60) {
+        AP_flash_flag = 0; //keep it bounded
+    }
 }
 
 void drawButtons() {
@@ -957,6 +1029,11 @@ int main() {
             if (IsKeyPressed(KEY_P)) {
                 paused = !paused;
             }
+
+            if (IsKeyPressed(KEY_Z)) {
+                simulation.APEngage();//change the status of AP, turning it on/off
+            }
+
             if (!simulation.APisENGAGED()) {
                 input = readControls();
             }else {
@@ -980,6 +1057,7 @@ int main() {
             drawSpacecraft(simulation.craft(), input);
             drawTelemetry(simulation);
             drawTimescale(simulation.gettimescale());
+            //drawAP(simulation);
             drawPlanet();
             drawHelp();
             drawFPS();

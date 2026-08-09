@@ -186,9 +186,13 @@ void Simulation::checkDocking() {
 }
 
 ControlInput Simulation::use_AP(Spacecraft craft_) {
-    if (AP_.isEngaged()) {
-        return AP_.steer(craft_, portPosition());
-    }
+     if (AP_.isEngaged()) {
+         return AP_.steer(craft_, portPosition());
+     }
+}
+
+void Simulation::APEngage() {
+    AP_.engage();
 }
 
 void Simulation::checkFailure() {

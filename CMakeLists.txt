@@ -22,8 +22,10 @@ add_executable(orbital_rescue
         include/buttons.h
         src/buttons.cpp
         include/AP.h
-        src/AO.cpp
-        src/AP.cpp
+        include/wrapAngle.h
+        src/wrapAngle.cpp
+src/AP.cpp
+
 )
 
 target_include_directories(

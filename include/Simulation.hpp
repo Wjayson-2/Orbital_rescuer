@@ -72,6 +72,8 @@ public:
     const MissionState getState() const {return state_;}
     ControlInput use_AP(Spacecraft craft_);
     const bool APisENGAGED() const {return AP_.isEngaged();}
+    void APEngage();
+    const AP_status getAPstatus() const {return AP_.getStatus();};
 
 private:
     MissionStats missionStats_;

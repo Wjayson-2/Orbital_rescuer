@@ -1,0 +1,9 @@
+//
+// Created by WJays on 2026/8/9.
+//
+
+#ifndef ORBITALRESCUESTARTER_WRAPANGLE_H
+#define ORBITALRESCUESTARTER_WRAPANGLE_H
+double wrapAngle(double angle);
+
+#endif //ORBITALRESCUESTARTER_WRAPANGLE_H

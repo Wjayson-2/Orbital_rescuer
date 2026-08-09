@@ -6,11 +6,12 @@
 #include "Spacecraft.hpp"
 
 enum class AP_status {
+    Approach,
     Brake,
-    Adjust_x,
-    Adjust_y,
     Align,
-    Final_dock
+    Final_approach,
+    Docked,
+    Abort
 };
 
 struct errors {
@@ -23,7 +24,7 @@ struct errors {
 
 struct AP {
 public:
-    void engage(bool state);
+    void engage();
     bool isEngaged() const {return engaged_;};
     AP_status getStatus() const {return status_;};
     void setStatus(AP_status newStatus) {status_ = newStatus;};
@@ -31,7 +32,7 @@ public:
     void getErrors(const Spacecraft craft_, const Vec2 portposition);
 
 private:
-    AP_status status_{AP_status::Brake};
+    AP_status status_{AP_status::Approach};
     bool engaged_ = false;
     errors errors_;
 
