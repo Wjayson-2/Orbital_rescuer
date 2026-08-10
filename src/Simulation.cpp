@@ -10,7 +10,7 @@
 
 namespace {
 
-constexpr int kMaxTrailPoints = 300;
+constexpr int kMaxTrailPoints = 30000;
 
 constexpr double kCraftCollisionRadius = 0;
 
@@ -81,6 +81,7 @@ void Simulation::reset() {
     missionTime_ = 0.0;
     state_ = MissionState::Briefing;
     timeScale_ = TimeScale::x1;
+    AP_.setStatus(AP_status::Approach);
 }
 
 void Simulation::start() {

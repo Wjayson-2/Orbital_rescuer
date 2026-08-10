@@ -10,5 +10,5 @@ DockingLimits 38 8 0.25
 angularVelocity 0
 mass 200
 hullIntegrity 100.0
-planet 0 0 30 20000000000000000
+planet 0 400 30 20000000000000000
 #x,y,radius,mass

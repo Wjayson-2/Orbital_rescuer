@@ -1,10 +1,10 @@
 name ORBITAL_RESCUE_01
 callsign KESTREL
-startPosition -260 80
+startPosition -260 -180
 startVelocity 0 0
 startAngleRadians 0
 startFuel 600
-timeLimit 120
+timeLimit 120000
 DockingLimits 38 8 0.25
 #captureDistance,safeSpeed,safeAngleRadians
 angularVelocity 0
