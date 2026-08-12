@@ -4,11 +4,11 @@ startPosition -260 80
 startVelocity 0 0
 startAngleRadians 0
 startFuel 600
-timeLimit 120
+timeLimit 1200
 DockingLimits 38 8 0.25
 #captureDistance,safeSpeed,safeAngleRadians
 angularVelocity 0
 mass 200
 hullIntegrity 100.0
-planet 0 400 30 20000000000000000
+planet 0 240 30 20000000000000000
 #x,y,radius,mass

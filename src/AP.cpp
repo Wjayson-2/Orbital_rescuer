@@ -40,7 +40,7 @@ ControlInput AP::steer(const Spacecraft craft_, const Vec2 portPosition) {
         double desired_angle = atan2(position_error.y, position_error.x);
         double radian_error = wrapAngle(desired_angle - craft_.angleRadians());//makes sure radian_error is minimized to -180-180 deg
         bool need_help = false;
-
+        finished = false;
         if (!isMaxRecorded) {
             max_distance = (target_approach - craft_.position()).magnitude(); //Find the max distance for future normalization
             max_radian_error = radian_error;
@@ -71,7 +71,7 @@ ControlInput AP::steer(const Spacecraft craft_, const Vec2 portPosition) {
         }
 
 
-        std::cout << position_error.x <<position_error.y << std::endl;
+        //std::cout << position_error.x <<position_error.y << std::endl;
         if (double_abs(position_error.x) < 150 && double_abs(position_error.y) < 5) {
             status_ = AP_status::Brake;
             isMaxRecorded = false;
@@ -89,7 +89,7 @@ ControlInput AP::steer(const Spacecraft craft_, const Vec2 portPosition) {
             double thrust_input = velocity_error / 10 * kbrake;
             input.mainThrottle += std::clamp(thrust_input, 0.0, 1.0);
         }
-        if (craft_.velocity().magnitude() < 0.001) {
+        if (craft_.velocity().magnitude() < 0.01) {
             status_ = AP_status::Align;
         }
 
@@ -109,7 +109,7 @@ ControlInput AP::steer(const Spacecraft craft_, const Vec2 portPosition) {
             if (craft_.velocity().magnitude() < 2 && !finished) {
                 input.lateralThrottle += std::clamp(error_y / max_y_distance, -0.7, 0.7);
             }
-            std::cout<<position_error.x<<" "<<position_error.y<<" "<<error_y<<std::endl;
+            //std::cout<<position_error.x<<" "<<position_error.y<<" "<<error_y<<std::endl;
             if  (double_abs(position_error.y) < 5 && double_abs(craft_.velocity().y) > 0) {
                 double klateralbrake = -10; //the thrust coefficient when braking
                 double velocity_error = (craft_.velocity().y);
