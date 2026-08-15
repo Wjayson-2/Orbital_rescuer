@@ -4,7 +4,7 @@
 #ifndef ORBITALRESCUESTARTER_MISSIONCONFIG_H
 #define ORBITALRESCUESTARTER_MISSIONCONFIG_H
 #include <string>
-#include "vec2.hpp"
+#include "Vec2.hpp"
 
 struct DockingLimits {
     double captureDistance{};

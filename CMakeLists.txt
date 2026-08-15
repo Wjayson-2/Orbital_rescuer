@@ -17,14 +17,13 @@ add_executable(orbital_rescue
     src/main.cpp
     src/Spacecraft.cpp
     src/Simulation.cpp
-        include/MissionConfig.h
-        src/MissionConfig.cpp
-        include/buttons.h
-        src/buttons.cpp
-        include/AP.h
-        include/wrapAngle.h
-        src/wrapAngle.cpp
-src/AP.cpp
+    include/MissionConfig.hpp
+    src/MissionConfig.cpp
+    include/Buttons.hpp
+    include/AP.hpp
+    include/WrapAngle.hpp
+    src/wrapAngle.cpp
+    src/AP.cpp
 
 )
 
@@ -39,3 +38,26 @@ target_link_libraries(
     PRIVATE
     raylib
 )
+
+set_target_properties(orbital_rescue PROPERTIES
+        COMPILE_WARNING_AS_ERROR ON
+)
+
+
+if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    target_compile_options(orbital_rescue PRIVATE
+            -Wall
+            -Wextra
+            -Wpedantic
+            -Wshadow
+            -Wconversion
+    )
+endif()
+
+find_program(CLANG_TIDY_EXE NAMES clang-tidy)
+
+if(CLANG_TIDY_EXE)
+    set_target_properties(orbital_rescue PROPERTIES
+            CXX_CLANG_TIDY "${CLANG_TIDY_EXE}"
+    )
+endif()

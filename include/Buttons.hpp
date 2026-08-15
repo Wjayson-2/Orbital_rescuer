@@ -4,7 +4,7 @@
 
 #ifndef ORBITALRESCUESTARTER_BUTTONS_H
 #define ORBITALRESCUESTARTER_BUTTONS_H
-#pragma once
+
 
 #include "raylib.h"
 #include <string>
@@ -61,11 +61,11 @@ struct Button {
             MeasureText(text.c_str(), fontSize);
 
         const int textX = static_cast<int>(
-            bounds.x + (bounds.width - textWidth) / 2.0f
+            bounds.x + (bounds.width - static_cast<double>(textWidth)) / 2.0f
         );
 
         const int textY = static_cast<int>(
-            bounds.y + (bounds.height - fontSize) / 2.0f
+            bounds.y + (bounds.height - static_cast<double>(fontSize)) / 2.0f
         );
 
         DrawText(

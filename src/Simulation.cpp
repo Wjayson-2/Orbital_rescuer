@@ -6,7 +6,7 @@
 #include <stdexcept>
 #include <vector>
 
-#include "MissionConfig.h"
+#include "MissionConfig.hpp"
 
 namespace {
 
@@ -129,13 +129,18 @@ void pushback(Vec2 offset, double distance, Spacecraft& craft_) {
     Vec2 push_to;
     Vec2 collision_normal = offset.normalized();
     Vec2 push_v;
+    double craft_vn;
+    Vec2 craft_n;
 
     push_to = craft_.position() + collision_normal * penetration;
     craft_.setPosition(push_to);
-    push_v = ((-craft_.velocity()).normalized()) * craft_.velocity().magnitude();
-    if (dot(craft_.velocity().normalized(), craft_.velocity()) > 0.0) {
-        craft_.setVelocity(push_v);
+    craft_vn = craft_.velocity().x * collision_normal.x + craft_.velocity().y * collision_normal.y;
+    craft_n = collision_normal * craft_vn;
+    craft_n = craft_n * 2;
+    if (craft_vn < 0) {
+        craft_.setVelocity(craft_.velocity() - craft_n);
     }
+
 
 }
 
@@ -176,7 +181,7 @@ void Simulation::checkDocking() {
 
 
     if (distance < config_global.dockingLimits.captureDistance) {
-        std::cout<<distance<<std::endl;
+        //std::cout<<distance<<std::endl;
         pushback(offset, distance, craft_);
         if (craft_.cooldown_<=0) {
 
@@ -186,10 +191,11 @@ void Simulation::checkDocking() {
     }
 }
 
-ControlInput Simulation::use_AP(Spacecraft craft_) {
-     if (AP_.isEngaged()) {
-         return AP_.steer(craft_, portPosition());
+ControlInput Simulation::use_AP(Spacecraft& craft_in) {
+    if (AP_.isEngaged()) {
+         return AP_.steer(craft_in, portPosition());
      }
+    return {};
 }
 
 void Simulation::APEngage() {

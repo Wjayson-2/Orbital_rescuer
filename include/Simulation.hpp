@@ -2,8 +2,8 @@
 #include "Spacecraft.hpp"
 #include <string>
 #include <vector>
-#include "vec2.hpp"
-#include "AP.h"
+#include "Vec2.hpp"
+#include "AP.hpp"
 
 enum class TimeScale {
     x1,
@@ -65,15 +65,15 @@ public:
     void speedDn();
     std::string statusMessage() const;
 
-    const GameStatus getGameStatus() const {return gameStatus_; }
+    GameStatus getGameStatus() const {return gameStatus_; }
     void setGameStatus(GameStatus newStatus);
     void updateStat();
-    const MissionStats getMissionStats() const {return missionStats_;}
-    const MissionState getState() const {return state_;}
-    ControlInput use_AP(Spacecraft craft_);
-    const bool APisENGAGED() const {return AP_.isEngaged();}
+    MissionStats getMissionStats() const {return missionStats_;}
+    MissionState getState() const {return state_;}
+    ControlInput use_AP(Spacecraft& craft_);
+    bool APisENGAGED() const {return AP_.isEngaged();}
     void APEngage();
-    const AP_status getAPstatus() const {return AP_.getStatus();};
+    AP_status getAPstatus() const {return AP_.getStatus();};
 
 private:
     MissionStats missionStats_;

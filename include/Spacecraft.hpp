@@ -38,9 +38,9 @@ private:
     double angleRadians_{};
     double angularVelocity_{};
 
-    double dryMass_{1200.0};
-    double fuel_{600.0};
-    double hullIntegrity_{100.0};
+    double dryMass_{};
+    double fuel_{};
+    double hullIntegrity_{};
 
     static constexpr double kMainThrust = 10000.0;
     static constexpr double kLateralThrust = 2500.0;

@@ -1,7 +1,7 @@
 //
 // Created by WJays on 2026/8/3.
 //
-#include "MissionConfig.h"
+#include "MissionConfig.hpp"
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -56,7 +56,7 @@ void loadMissionConfig(
         {
             file >> config.startPosition.x;
             file >> config.startPosition.y;
-            if(file.fail())
+            if(file.fail() || abs(config.startPosition.x) > 1000.0 || abs(config.startPosition.y) > 700.0)
             {
                 std::cout << "Start position wrong\n";
             }else{
@@ -102,7 +102,7 @@ void loadMissionConfig(
         else if(key == "timeLimit")
         {
             file >> config.timeLimit;
-            if(file.fail())
+            if(file.fail() || config.timeLimit <= 0)
             {
                 std::cout << "Timelimit invalid\n";
             }else {
@@ -124,7 +124,7 @@ void loadMissionConfig(
             }
         }else if (key == "hullIntegrity") {
             file >> config.hullIntegrity;
-            if(file.fail()) {
+            if(file.fail() || config.hullIntegrity > 100 || config.hullIntegrity <= 0) {
                 std::cout << "Hull integrity invalid\n";
             }else{
                 config.hullIntegrity_initialized = true;
@@ -133,7 +133,7 @@ void loadMissionConfig(
             file >> config.dockingLimits.captureDistance;
             file >> config.dockingLimits.safeSpeed;
             file >> config.dockingLimits.safeAngleRadians;
-            if(file.fail()) {
+            if(file.fail() || config.dockingLimits.captureDistance <= 0 || config.dockingLimits.safeSpeed <= 0) {
                 std::cout << "Docking limits invalid\n";
             }else{
                 config.dockingLimits_initialized = true;

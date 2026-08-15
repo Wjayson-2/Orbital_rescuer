@@ -1,6 +1,5 @@
 #include "raylib.h"
 #include "Simulation.hpp"
-
 #include <algorithm>
 #include <cmath>
 #include <iomanip>
@@ -8,9 +7,9 @@
 #include <sstream>
 #include <string>
 #include <vector>
-#include "MissionConfig.h"
-#include "Buttons.h"
-#include "AP.h"
+#include "MissionConfig.hpp"
+#include "Buttons.hpp"
+#include "AP.hpp"
 
 
 
@@ -174,18 +173,18 @@ void drawStation(const Vec2& position, const Vec2& port_) {
     DrawRectangle(static_cast<int>(p.x - 112), static_cast<int>(p.y - 12), 62, 24, BLUE);
     DrawRectangle(static_cast<int>(p.x + 50), static_cast<int>(p.y - 12), 62, 24, BLUE);
 
-    DrawCircleLines(static_cast<int>(port.x), static_cast<int>(port.y), config_global.dockingLimits.captureDistance, SKYBLUE);
-    DrawCircleLines(static_cast<int>(port.x), static_cast<int>(port.y), config_global.dockingLimits.captureDistance+13, Fade(SKYBLUE, 0.45f));
+    DrawCircleLines(static_cast<int>(port.x), static_cast<int>(port.y), static_cast<float>(config_global.dockingLimits.captureDistance), SKYBLUE);
+    DrawCircleLines(static_cast<int>(port.x), static_cast<int>(port.y), static_cast<float>(config_global.dockingLimits.captureDistance+13), Fade(SKYBLUE, 0.45f));
 
     DrawText("ARES RELAY", static_cast<int>(p.x - 34), static_cast<int>(p.y + 52), 16, LIGHTGRAY);
 }
 
 void drawTrail() {
     if (trail_.size() > 2) {
-        for (int i = 0; i+1 < trail_.size(); ++i) {
+        for (int i = 0; i+1 < static_cast<int>(trail_.size()); ++i) {
             //Vector2 start{static_cast<float>(trail_[i].x), static_cast<float>(trail_[i].y)};
             //Vector2 end{static_cast<float>(trail_[i+1].x), static_cast<float>(trail_[i+1].y)};
-            float alpha = 1.0f * i / trail_.size();
+            float alpha = 1.0f * static_cast<float>(i) / static_cast<float>(trail_.size());
 
             DrawLineV(worldToScreen(trail_[i]), worldToScreen(trail_[i+1]), Fade(SKYBLUE, alpha));
         }
@@ -237,7 +236,7 @@ void drawSpacecraft(const Spacecraft& craft, const ControlInput& input) {
 
 void drawPlanet() {
     const Vector2 p = worldToScreen(config_global.planetspec.position);
-    DrawCircleV(p, config_global.planetspec.radius, GRAY);
+    DrawCircleV(p, static_cast<float>(config_global.planetspec.radius), GRAY);
 }
 
 void drawTelemetry(const Simulation& sim) {
@@ -334,19 +333,19 @@ void drawHelp() {
 
 }
 
-int AP_flash_flag = 0; //to record the time the sign AP has flashed
+// int AP_flash_flag = 0; //to record the time the sign AP has flashed
 
-void drawAP(const Simulation& simulation) {
-    if (simulation.APisENGAGED()) {
-        AP_flash_flag += 1;
-        if ((AP_flash_flag % 60) < 30) { //turn on/off every 30 frames
-            DrawText("AP", kScreenWidth / 2 + 30, kScreenHeight - 92,  28, YELLOW);
-        }
-    }
-    if (AP_flash_flag == 60) {
-        AP_flash_flag = 0; //keep it bounded
-    }
-}
+// void drawAP(const Simulation& simulation) {
+//     if (simulation.APisENGAGED()) {
+//         AP_flash_flag += 1;
+//         if ((AP_flash_flag % 60) < 30) { //turn on/off every 30 frames
+//             DrawText("AP", kScreenWidth / 2 + 30, kScreenHeight - 92,  28, YELLOW);
+//         }
+//     }
+//     if (AP_flash_flag == 60) {
+//         AP_flash_flag = 0; //keep it bounded
+//     }
+// }
 
 void drawButtons() {
 
@@ -605,7 +604,7 @@ void drawResultsMenu(const Simulation& simulation) {
         value.c_str(),
         static_cast<int>(
             bounds.x +
-            (bounds.width - valueWidth) / 2.0f
+            (bounds.width - static_cast<float>(valueWidth)) / 2.0f
         ),
         static_cast<int>(bounds.y + 43.0f),
         valueFontSize,
@@ -621,7 +620,7 @@ void drawResultsMenu(const Simulation& simulation) {
             detail.c_str(),
             static_cast<int>(
                 bounds.x +
-                (bounds.width - detailWidth) / 2.0f
+                (bounds.width - static_cast<float>(detailWidth)) / 2.0f
             ),
             static_cast<int>(bounds.y + 86.0f),
             detailFontSize,
@@ -860,7 +859,7 @@ void drawStatsMenu(
         hullText.c_str(),
         static_cast<int>(
             hullCard.x +
-            (hullCard.width - hullTextWidth) / 2.0f
+            (hullCard.width - static_cast<float>(hullTextWidth)) / 2.0f
         ),
         static_cast<int>(hullCard.y + 40.0f),
         30,
