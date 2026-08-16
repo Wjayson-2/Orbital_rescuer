@@ -11,7 +11,7 @@ class Spacecraft {
 public:
     Spacecraft();
 
-    double cooldown_ = 0;
+
 
     void reset();
     void update(double dt, const ControlInput& input);
@@ -31,10 +31,15 @@ public:
 
     void applyCollisionDamage(double relativeSpeed);
 
+    void registerCollision(double dt);
+    bool canTakeCollision() const;
+    void setCooldown(double cooldown);
+
 private:
     Vec2 position_{};
     Vec2 velocity_{};
 
+    double cooldown_ = 0;
     double angleRadians_{};
     double angularVelocity_{};
 

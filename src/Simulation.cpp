@@ -1,16 +1,17 @@
 #include "Simulation.hpp"
 #include <algorithm>
 #include <cmath>
+#include <array>
 #include <iostream>
 #include <ostream>
 #include <stdexcept>
-#include <vector>
+
 
 #include "MissionConfig.hpp"
 
 namespace {
 
-constexpr int kMaxTrailPoints = 30000;
+
 
 constexpr double kCraftCollisionRadius = 0;
 
@@ -23,7 +24,21 @@ double wrappedAngle(double angle) {
 }
 }
 
-std::vector<Vec2> trail_;
+
+void Simulation::recordTrailPoint() {
+    trail_[trailNext_] = craft_.position();
+
+    trailNext_ = (trailNext_ + 1) % kMaxTrailPoints;
+
+    if (trailCount_ < kMaxTrailPoints) {
+        ++trailCount_;
+    }
+}
+
+void Simulation::clearTrail() {
+    trailNext_ = 0;
+    trailCount_ = 0;
+}
 
 Simulation::Simulation() = default;
 
@@ -73,15 +88,34 @@ void Simulation::updateStat() {
 
 }
 
+
+
 void Simulation::reset() {
 
     craft_.reset();
-    trail_.clear();
+    clearTrail();
     missionStats_.missionTime = missionTime_;
     missionTime_ = 0.0;
     state_ = MissionState::Briefing;
     timeScale_ = TimeScale::x1;
-    AP_.setStatus(AP_status::Approach);
+    missionStats_ = {};
+    AP_.reset();
+
+}
+
+const Vec2& Simulation::getTrailPoint(std::size_t i) const {
+    std::size_t oldest;
+
+    if (trailCount_ < kMaxTrailPoints) {
+        oldest = 0;
+    } else {
+        oldest = trailNext_;
+    }
+
+    std::size_t index =
+        (oldest + i) % kMaxTrailPoints;
+
+    return trail_[index];
 }
 
 void Simulation::start() {
@@ -95,13 +129,7 @@ void Simulation::update(double dt, const ControlInput& input) {
     if (state_ != MissionState::Running) {
         return;
     }
-    if (trail_.size() < kMaxTrailPoints) {
-        trail_.push_back(craft_.position());
-    }else if (trail_.size() == kMaxTrailPoints) {
-        trail_.erase(trail_.begin());
-    }else {
-        throw std::logic_error("Simulation::update(): Trail size too large");
-    }
+    recordTrailPoint();
     int time_scale;
     if (timeScale_ == TimeScale::x5) {
         time_scale = 5;
@@ -183,10 +211,10 @@ void Simulation::checkDocking() {
     if (distance < config_global.dockingLimits.captureDistance) {
         //std::cout<<distance<<std::endl;
         pushback(offset, distance, craft_);
-        if (craft_.cooldown_<=0) {
+        if (craft_.canTakeCollision()) {
 
             craft_.applyCollisionDamage(craft_.velocity().magnitude());
-            craft_.cooldown_ = 1.0;
+            craft_.setCooldown(1.0);
         }
     }
 }

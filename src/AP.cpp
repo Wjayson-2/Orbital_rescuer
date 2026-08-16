@@ -17,6 +17,16 @@ double double_abs(double number) {
     return number;
 }
 
+void AP::reset() {
+    engaged_ = false;
+    status_ = {AP_status::Approach};
+    engaged_ = {false};
+    isMaxRecorded_ = {false};
+    max_distance_ = {0};
+    max_radian_error_ = {0};
+    max_y_distance_ = {0};
+    finished_ = {false}; //tells whether the lateral brake should work
+}
 
 
 ControlInput AP::steer(const Spacecraft& craft_, const Vec2& portPosition) {

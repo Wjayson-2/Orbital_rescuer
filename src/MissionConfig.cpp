@@ -154,6 +154,8 @@ void loadMissionConfig(
         }
 
         else if(key[0] == '#') {
+            std::string ignored;
+            std::getline(file, ignored);
             continue;
         }
         else {

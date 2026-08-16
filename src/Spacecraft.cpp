@@ -17,7 +17,8 @@ void Spacecraft::reset() {
     hullIntegrity_ = config_global.hullIntegrity;
     fuel_ = config_global.startFuel;
     dryMass_ = config_global.mass;
-    cooldown_ = 0;
+    setCooldown(0.0);
+
 }
 
 void Spacecraft::setPosition(const Vec2& position) {
@@ -32,8 +33,8 @@ void Spacecraft::update(double dt, const ControlInput& input) {
     if (isDestroyed()) {
         return;
     }
-    if (cooldown_ > 0) {
-        cooldown_ -= dt;
+    if (canTakeCollision()) {
+        registerCollision(dt);
     }
     const double mainThrottle = std::clamp(input.mainThrottle, 0.0, 1.0);
     const double lateralThrottle = std::clamp(input.lateralThrottle, -1.0, 1.0);
@@ -87,6 +88,21 @@ void Spacecraft::update(double dt, const ControlInput& input) {
 }
 
 
+bool Spacecraft::canTakeCollision() const {
+    if (cooldown_ <= 0) {
+        return true;
+    }else {
+        return false;
+    }
+};
+
+void Spacecraft::registerCollision(double dt) {
+    cooldown_ -= dt;
+}
+
+void Spacecraft::setCooldown(double cooldown) {
+    cooldown_ = cooldown;
+}
 
 void Spacecraft::applyCollisionDamage(double relativeSpeed) {
     if (relativeSpeed <= config_global.dockingLimits.safeSpeed) {

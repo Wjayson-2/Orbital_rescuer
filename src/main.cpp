@@ -179,17 +179,23 @@ void drawStation(const Vec2& position, const Vec2& port_) {
     DrawText("ARES RELAY", static_cast<int>(p.x - 34), static_cast<int>(p.y + 52), 16, LIGHTGRAY);
 }
 
-void drawTrail() {
-    if (trail_.size() > 2) {
-        for (int i = 0; i+1 < static_cast<int>(trail_.size()); ++i) {
-            //Vector2 start{static_cast<float>(trail_[i].x), static_cast<float>(trail_[i].y)};
-            //Vector2 end{static_cast<float>(trail_[i+1].x), static_cast<float>(trail_[i+1].y)};
-            float alpha = 1.0f * static_cast<float>(i) / static_cast<float>(trail_.size());
+void drawTrail(const Simulation& simulation) {
+    std::size_t count = simulation.getTrailCount();
 
-            DrawLineV(worldToScreen(trail_[i]), worldToScreen(trail_[i+1]), Fade(SKYBLUE, alpha));
-        }
-    }else {
+    if (count < 2) {
         return;
+    }
+
+    for (std::size_t i = 0; i + 1 < count; ++i) {
+        float alpha =
+            static_cast<float>(i + 1) /
+            static_cast<float>(count);
+
+        DrawLineV(
+            worldToScreen(simulation.getTrailPoint(i)),
+            worldToScreen(simulation.getTrailPoint(i + 1)),
+            Fade(SKYBLUE, alpha)
+        );
     }
 }
 
@@ -995,9 +1001,6 @@ int main() {
             }
         }
         else if (simulation.getGameStatus() == GameStatus::Flight) {
-
-
-
             timescalex1.update();
 
             timescalex2.update();
@@ -1060,7 +1063,7 @@ int main() {
             drawPlanet();
             drawHelp();
             drawFPS();
-            drawTrail();
+            drawTrail(simulation);
             drawButtons();
 
             const std::string status = simulation.statusMessage();
@@ -1115,7 +1118,7 @@ int main() {
             BeginDrawing();
             ClearBackground(Color{4, 8, 20, 255});
             returnButton.draw();
-            drawTrail();
+            drawTrail(simulation);
             drawStars();
             drawPlanet();
             drawStation(simulation.stationPosition(), simulation.portPosition());

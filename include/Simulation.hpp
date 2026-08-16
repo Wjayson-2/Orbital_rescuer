@@ -1,10 +1,10 @@
 #pragma once
 #include "Spacecraft.hpp"
 #include <string>
-#include <vector>
 #include "Vec2.hpp"
+#include <array>
 #include "AP.hpp"
-
+constexpr int kMaxTrailPoints = 30000;
 enum class TimeScale {
     x1,
     x2,
@@ -74,8 +74,18 @@ public:
     bool APisENGAGED() const {return AP_.isEngaged();}
     void APEngage();
     AP_status getAPstatus() const {return AP_.getStatus();};
+    void clearTrail();
+    void recordTrailPoint();
+
+    const Vec2& getTrailPoint(std::size_t i) const;
+    std::size_t getTrailCount() const {
+        return trailCount_;
+    }
 
 private:
+    std::array<Vec2, kMaxTrailPoints> trail_{};
+    std::size_t trailNext_ = 0;
+    std::size_t trailCount_ = 0;
     MissionStats missionStats_;
     AP AP_;
     TimeScale timeScale_;
@@ -90,4 +100,4 @@ private:
     void checkFailure();
 };
 
-extern std::vector<Vec2> trail_;
+

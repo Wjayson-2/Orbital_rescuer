@@ -29,12 +29,12 @@ public:
     AP_status getStatus() const {return status_;};
     void setStatus(AP_status newStatus) {status_ = newStatus;};
     ControlInput steer(const Spacecraft& craft_, const Vec2& portPosition);
-    void getErrors(const Spacecraft& craft_, const Vec2& portposition);
+    //void getErrors(const Spacecraft& craft_, const Vec2& portposition);
+    void reset();
 
 private:
     AP_status status_{AP_status::Approach};
     bool engaged_ {false};
-    errors errors_;
     bool isMaxRecorded_ {false};
     double max_distance_ {0};
     double max_radian_error_ {0};
