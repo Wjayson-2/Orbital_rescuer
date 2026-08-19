@@ -24,6 +24,16 @@ add_executable(orbital_rescue
     include/WrapAngle.hpp
     src/wrapAngle.cpp
     src/AP.cpp
+        src/main.cpp
+
+        src/Input.cpp
+        src/UI.cpp
+
+        src/Spacecraft.cpp
+        src/Simulation.cpp
+        src/MissionConfig.cpp
+        src/wrapAngle.cpp
+        src/AP.cpp
 
 )
 

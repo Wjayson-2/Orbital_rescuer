@@ -1,8 +1,7 @@
 //
 // Created by WJays on 2026/8/3.
 //
-#ifndef ORBITALRESCUESTARTER_MISSIONCONFIG_H
-#define ORBITALRESCUESTARTER_MISSIONCONFIG_H
+#pragma once
 #include <string>
 #include "Vec2.hpp"
 
@@ -55,4 +54,3 @@ void loadMissionConfig(
     const std::string& filename
 );
 extern MissionConfig config_global;
-#endif //ORBITALRESCUESTARTER_MISSIONCONFIG_H

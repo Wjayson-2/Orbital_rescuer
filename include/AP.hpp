@@ -1,8 +1,7 @@
 //
 // Created by WJays on 2026/8/7.
 //
-#ifndef ORBITALRESCUESTARTER_AP_H
-#define ORBITALRESCUESTARTER_AP_H
+#pragma once
 #include "Spacecraft.hpp"
 
 enum class AP_status {
@@ -43,4 +42,3 @@ private:
 
 };
 
-#endif //ORBITALRESCUESTARTER_AP_H

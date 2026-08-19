@@ -2,8 +2,7 @@
 // Created by WJays on 2026/8/6.
 //
 
-#ifndef ORBITALRESCUESTARTER_BUTTONS_H
-#define ORBITALRESCUESTARTER_BUTTONS_H
+#pragma once
 
 
 #include "raylib.h"
@@ -77,4 +76,3 @@ struct Button {
         );
     }
 };
-#endif //ORBITALRESCUESTARTER_BUTTONS_H
