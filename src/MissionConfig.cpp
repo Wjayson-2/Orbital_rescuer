@@ -17,7 +17,7 @@ void loadMissionConfig(
     MissionConfig config;
     std::ifstream file(filename);
 
-
+    std::cout<<filename<<"\n";
     if(!file.is_open())
     {
         throw std::runtime_error("File not found");

@@ -52,9 +52,9 @@ void Spacecraft::update(double dt, const ControlInput& input) {
     double gravity_magnitude;
 
     if (Distance > config_global.planetspec.radius) {
-        gravity_magnitude = (kG * (config_global.mass + fuel_) * config_global.planetspec.mass)/pow(Distance, 2);
+        gravity_magnitude = (kG * config_global.planetspec.mass)/pow(Distance, 2);
     }else {
-        gravity_magnitude = (kG * (config_global.mass + fuel_) * config_global.planetspec.mass)/pow(config_global.planetspec.radius, 2);
+        gravity_magnitude = (kG * config_global.planetspec.mass)/pow(config_global.planetspec.radius, 2);
     }
 
     Vec2 gravitational_pull = (-position_ + config_global.planetspec.position).normalized() * gravity_magnitude; //direction of gravity
