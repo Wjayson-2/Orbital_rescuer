@@ -10,21 +10,24 @@ you are extending a real program rather than beginning from an empty file.
 ## Controls
 
 - `Enter`: start mission
-- `W` or `Up`: main engine
+- `W`: main engine
 - `A` / `D`: lateral thrusters
-- `Left` / `Right`: rotate
+- `Q` / `E`: rotate
 - `P`: pause
 - `R`: reset
+- `>`: Speed sim up
+- `<`: Speed sim down
 
 ## Build in CLion
 
 1. Open this folder as a CMake project.
 2. Allow CMake to download and build raylib.
-3. Select the `orbital_rescue` target.
+3. Select the `orbital_rescue`/`orbital_test` target.
 4. Run.
 
-The first CMake configuration requires internet access because raylib is
-downloaded through `FetchContent`.
+Raylib and google test should be downloaded and included in the main directory prior to build.
+
+The 2 tests test the Vec2 and wrapAngle separately.
 
 ## What is already implemented
 
@@ -163,14 +166,4 @@ While working, be able to explain:
 5. Why is an autopilot state machine easier to debug than one enormous `if`?
 6. What happens if `|r|` is almost zero in the gravity equation?
 
-## Suggested Git milestones
 
-1. `starter runs`
-2. `mission config loader`
-3. `flight trail`
-4. `collision response`
-5. `gravity and time warp`
-6. `gui buttons`
-7. `autopilot approach`
-8. `autopilot docking`
-9. `mission results and cleanup`
